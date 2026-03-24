@@ -12,7 +12,7 @@ The core move is simple. Give the loop a bounded attacker/defender environment, 
 
 The repo is intentionally small. In practice, a few files and surfaces matter most:
 
-- `program.md`: the doctrine file. This is the main human-written surface and the first thing to point an agent at.
+- `program.md`: the instructions file. This is the main human-written surface and the first thing to point an agent at.
 - `autoattacker/cli.py`: the command-line entrypoint. It runs search loops, writes evidence, and updates best-so-far state.
 - `autoattacker/kernel/eval.py`: fixed evaluation setup definitions. `toy_default_v1` lives here, along with the tiny shifted smoke setup.
 - `autoattacker/kernel/` and `autoattacker/adapters/toy_control/`: the small active code surface. This is where operators, scoring, selection, and the bounded toy environment live.
@@ -107,4 +107,4 @@ macOS and Linux are the expected path. Windows may work with Python `3.11+`, but
 
 ## License
 
-A standalone license file is not checked in yet. If you plan to reuse the code, check the repo state before assuming license terms.
+MIT
