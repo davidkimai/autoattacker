@@ -4,26 +4,25 @@ autoattacker: AI agents running attacker/defender research loops automatically u
 
 autoattacker is autoresearch for red-team / blue-team research.
 
-The repo is built around one idea: let a loop propose new attacker and defender ideas, test them under the same fixed evaluation setup every time, keep the ones that actually help, discard the ones that don't, and leave behind saved run evidence you can inspect the next morning.
-
-The loop is small on purpose. You point it at a bounded toy environment, run a search, and check whether the best-so-far set moved for a real reason or stayed put.
+The core move is simple. Give the loop a bounded attacker/defender environment, freeze the evaluation setup, let it generate new attacker and defender ideas, and only keep the ones that actually beat the current best under saved run evidence. You wake up to a log of experiments and a best-so-far set that moved for a reason.
 
 ## How it works
 
 `generate -> evaluate -> compare -> decide -> record -> repeat`
 
-The main evaluation setup is `toy_default_v1`. It freezes the adapter, seeds (`7`, `11`, `19`), task count (`4`), turn budget (`6`), and the number of new attacker and defender candidates tested each iteration (`3` per side). That keeps comparisons fair. A new candidate only gets promoted if it beats the current best under that same setup and the result is backed by saved run evidence.
+The repo is intentionally small. In practice, a few files and surfaces matter most:
 
-The keep/discard logic is simple. Each new candidate ends in one of four outcomes: `promote`, `archive_interesting`, `discard`, or `crash`. Only `promote` changes the best-so-far set.
+- `program.md`: the doctrine file. This is the main human-written surface and the first thing to point an agent at.
+- `autoattacker/cli.py`: the command-line entrypoint. It runs search loops, writes evidence, and updates best-so-far state.
+- `autoattacker/kernel/eval.py`: fixed evaluation setup definitions. `toy_default_v1` lives here, along with the tiny shifted smoke setup.
+- `autoattacker/kernel/` and `autoattacker/adapters/toy_control/`: the small active code surface. This is where operators, scoring, selection, and the bounded toy environment live.
+- `runs/frontier.json` and `runs/campaign_results.tsv`: state written by the loop. `frontier.json` holds the current best attacker and defender. `campaign_results.tsv` is the append-only experiment log.
 
-The main evidence surfaces are:
+The main evaluation setup is `toy_default_v1`. It freezes the adapter, seeds (`7`, `11`, `19`), task count (`4`), turn budget (`6`), and the number of new attacker and defender candidates tested each iteration (`3` per side). That keeps comparisons fair across search runs.
 
-- `runs/frontier.json`: the current best attacker, current best defender, and the small best-so-far set written by the loop
-- `runs/campaign_results.tsv`: the append-only log of keep/discard decisions
-- `runs/campaign-*/campaign_summary.md`: compact summaries for each search run
-- `runs/campaign-*/comparisons/` and `runs/*/matches/`: saved comparison and match artifacts
+The keep/discard rule is also simple. Every new candidate ends in one of four outcomes: `promote`, `archive_interesting`, `discard`, or `crash`. Only `promote` changes the best-so-far set.
 
-If you only inspect two files, start with `runs/frontier.json` and the latest `runs/campaign-*/campaign_summary.md`.
+The shipped environments are toy-first and bounded. They are there to study the loop under controlled conditions, not to build real-world offensive capability.
 
 ## Quick start
 
@@ -35,9 +34,29 @@ python3 -m unittest discover -s tests -v
 python3 -m autoattacker.cli campaign --eval toy_default_v1 --iterations 1
 ```
 
-That gives you the smallest credible verify-and-run path. After it finishes, inspect `runs/frontier.json`, `runs/campaign_results.tsv`, and the newest `runs/campaign-*/campaign_summary.md`.
+That is the smallest credible verify-and-run path. After it finishes, inspect `runs/frontier.json`, `runs/campaign_results.tsv`, and the newest `runs/campaign-*/campaign_summary.md`.
 
 ## Running the agent
+
+Open Codex, Claude, or any similar coding agent in this repo and point it at `program.md`. A good first prompt is:
+
+```text
+Read program.md, runs/frontier.json, runs/campaign_results.tsv, and the latest runs/campaign-*/campaign_summary.md. Then run 1 search iteration under toy_default_v1, inspect the saved evidence, and tell me whether the current best changed.
+```
+
+`program.md` is basically a lightweight skill. It tells the agent what kind of loop it is operating, what surfaces are meant to change, and what counts as a real improvement.
+
+### Working with the current best
+
+Start with `runs/frontier.json`. That file is the source of truth for the current best attacker and defender.
+
+Then read `runs/campaign_results.tsv`. That gives the agent the short history of what has already been tried, what got promoted, and what got discarded.
+
+A useful follow-up prompt looks like this:
+
+```text
+Read program.md and the current best state in runs/frontier.json. Propose 1 focused operator or adapter-calibration change for toy_default_v1, run it under the same fixed evaluation setup, and summarize whether the new candidate beat the current best or should be kept as archive/discarded.
+```
 
 The canonical search run uses the main fixed evaluation setup:
 
@@ -45,7 +64,7 @@ The canonical search run uses the main fixed evaluation setup:
 python3 -m autoattacker.cli campaign --eval toy_default_v1 --iterations 4
 ```
 
-Run it again on the same repo state if you want to see whether the loop can keep improving from the current best-so-far set:
+Run it again on the same repo state if you want to see whether progress continues from the same best-so-far set:
 
 ```bash
 python3 -m autoattacker.cli campaign --eval toy_default_v1 --iterations 3
@@ -57,32 +76,28 @@ There is also one tiny portability smoke on a shifted toy variant:
 python3 -m autoattacker.cli campaign --eval toy_shifted_smoke_v1 --iterations 2 --output-root runs/portability_shifted
 ```
 
-That shifted run exists to check that the loop still behaves sensibly under a small environment change. It is a smoke test, not a second benchmark program.
+That shifted run is there as a small portability check. It is not a second benchmark program.
 
 ## Project structure
 
-A few files matter most:
-
-- `README.md`: public entrypoint
-- `program.md`: doctrine for the loop
-- `autoattacker/cli.py`: command-line entrypoint for search runs
-- `autoattacker/kernel/eval.py`: fixed evaluation setup definitions
-- `autoattacker/kernel/`: scoring, selection, mutation, state updates, and summary generation
-- `autoattacker/adapters/toy_control/`: bounded toy environments used for shipped runs
-- `tests/`: verification
-- `runs/`: checked-in saved run evidence
+```text
+README.md                         public entrypoint
+program.md                        doctrine for the loop
+autoattacker/cli.py               search-run entrypoint
+autoattacker/kernel/eval.py       fixed evaluation setups
+autoattacker/kernel/              operators, scoring, selection, summaries
+autoattacker/adapters/toy_control/ bounded toy environments
+runs/                             saved run evidence and best-so-far state
+tests/                            verification
+```
 
 ## Design choices
 
-A few choices drive the whole repo.
-
-- **Fixed evaluation setup.** The main setup stays frozen so search runs are comparable. That is the whole point of the evidence trail.
-- **Keep/discard discipline.** Every new candidate is judged against the current best, then written down. Failed runs are written down too.
-- **State written by the loop.** `runs/frontier.json` and `runs/campaign_results.tsv` are the authoritative surfaces. Markdown summaries help humans read the results, but they are not the control plane.
-- **Small mutable surface.** The interesting knobs are `program.md`, the operator code, the selector, and the toy adapter. The rest is there to keep evaluation and evidence stable.
-- **Toy-first safety.** The shipped environments are bounded, local, and intentionally simplified. They exist to study the research loop itself.
-
-Current scope is deliberately narrow: one main fixed evaluation setup, one tiny shifted smoke, autonomous search runs, and cumulative saved evidence. Broad benchmark coverage, large orchestration layers, and real-world offensive tooling are outside the scope of this repo.
+- **Fixed evaluation setup.** Search runs are only useful if comparisons stay comparable.
+- **Keep/discard discipline.** Every new candidate is judged against the current best, then written down.
+- **State written by the loop.** `runs/frontier.json` and `runs/campaign_results.tsv` are authoritative. Markdown summaries are there to help humans read the results.
+- **Small mutable surface.** `program.md`, the operator code, the selector, and the toy adapter do most of the work.
+- **Narrow scope.** The repo stays focused on one main evaluation setup, one tiny shifted smoke, autonomous search runs, and cumulative saved evidence.
 
 ## Platform support
 
