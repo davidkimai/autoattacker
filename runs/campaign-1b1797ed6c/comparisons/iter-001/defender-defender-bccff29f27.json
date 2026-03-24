@@ -1,0 +1,242 @@
+{
+  "aggregate_score": {
+    "attacker_fitness": -0.671312,
+    "defender_fitness": -0.356534,
+    "system_report": {
+      "attack_progress": 0.357991,
+      "attack_success": 0.0,
+      "budget_used": 22.02964,
+      "cost_penalty": 0.917902,
+      "defender_success": 0.561368,
+      "false_positive_penalty": 0.0,
+      "stability": 0.859592,
+      "stealth_score": 0.246589
+    },
+    "weights": {
+      "attack_success": 1.0,
+      "attacker_cost_penalty": 1.0,
+      "defender_cost_penalty": 1.0,
+      "defender_success": 1.0,
+      "false_positive_penalty": 1.0,
+      "stealth_score": 1.0
+    }
+  },
+  "campaign_id": "campaign-1b1797ed6c",
+  "challenger": {
+    "candidate_id": "defender-bccff29f27",
+    "description": "guided_delta mutation of defender-78930f158c.",
+    "lineage": {
+      "batch_id": "campaign-1b1797ed6c-i001",
+      "generation": 4,
+      "mutation_note": "follow positive historical delta",
+      "parent_id": "defender-78930f158c"
+    },
+    "name": "Defender Guided Delta",
+    "notes": [],
+    "parameters": {
+      "hardening": 0.694,
+      "response_speed": 0.7728,
+      "sensitivity": 0.5999
+    },
+    "role": "defender",
+    "tags": [
+      "mutated",
+      "guided_delta",
+      "guided"
+    ]
+  },
+  "decision": {
+    "candidate_id": "defender-bccff29f27",
+    "candidate_score": -0.356534,
+    "comparator_id": "defender-78930f158c",
+    "comparator_score": -0.315161,
+    "novelty_score": 0.037367,
+    "reason": "loses comparator by 0.041 without compensating novelty",
+    "role": "defender",
+    "status": "discarded"
+  },
+  "delta_vs_incumbent": -0.041373,
+  "incumbent": {
+    "candidate_id": "defender-78930f158c",
+    "description": "counter_attacker mutation of defender-0e66185885.",
+    "lineage": {
+      "batch_id": "campaign-6d0f628b87-i003",
+      "generation": 3,
+      "mutation_note": "counter incumbent attacker surface",
+      "parent_id": "defender-0e66185885"
+    },
+    "name": "Defender Counter Attacker",
+    "notes": [],
+    "parameters": {
+      "hardening": 0.6433,
+      "response_speed": 0.7265,
+      "sensitivity": 0.5848
+    },
+    "role": "defender",
+    "tags": [
+      "mutated",
+      "counter_attacker",
+      "counter",
+      "attacker-aware"
+    ]
+  },
+  "incumbent_score": {
+    "attacker_fitness": -0.671122,
+    "defender_fitness": -0.315161,
+    "system_report": {
+      "attack_progress": 0.319561,
+      "attack_success": 0.0,
+      "budget_used": 21.978415,
+      "cost_penalty": 0.915768,
+      "defender_success": 0.600607,
+      "false_positive_penalty": 0.0,
+      "stability": 0.868065,
+      "stealth_score": 0.244646
+    },
+    "weights": {
+      "attack_success": 1.0,
+      "attacker_cost_penalty": 1.0,
+      "defender_cost_penalty": 1.0,
+      "defender_success": 1.0,
+      "false_positive_penalty": 1.0,
+      "stealth_score": 1.0
+    }
+  },
+  "iteration": 1,
+  "regime": {
+    "adapter_name": "toy_control",
+    "attacker_candidates": 3,
+    "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
+    "defender_candidates": 3,
+    "improvement_floor": 0.025,
+    "max_frontier_entries": 3,
+    "max_turns": 6,
+    "novelty_floor": 0.05,
+    "num_tasks": 4,
+    "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
+    "regime_id": "toy_default_v1",
+    "seeds": [
+      7,
+      11,
+      19
+    ],
+    "task_mix": "toy_control_calibrated_4slot_v1"
+  },
+  "role": "defender",
+  "seed_results": [
+    {
+      "batch_id": "campaign-1b1797ed6c-i001-s007",
+      "metrics": {
+        "attack_progress": 0.408906,
+        "attack_success": 0.0,
+        "avg_alerts": 1.75,
+        "budget_used": 21.97617,
+        "cost_penalty": 0.915674,
+        "defender_success": 0.516237,
+        "false_positive_penalty": 0.0,
+        "stability": 0.857073,
+        "stealth_score": 0.246142
+      },
+      "run_artifact": "runs/campaign-1b1797ed6c-i001-s007/matches/run-538f82e25d.json",
+      "score": {
+        "attacker_fitness": -0.669532,
+        "defender_fitness": -0.399437,
+        "system_report": {
+          "attack_progress": 0.408906,
+          "attack_success": 0.0,
+          "budget_used": 21.97617,
+          "cost_penalty": 0.915674,
+          "defender_success": 0.516237,
+          "false_positive_penalty": 0.0,
+          "stability": 0.857073,
+          "stealth_score": 0.246142
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      },
+      "seed": 7
+    },
+    {
+      "batch_id": "campaign-1b1797ed6c-i001-s011",
+      "metrics": {
+        "attack_progress": 0.270409,
+        "attack_success": 0.0,
+        "avg_alerts": 2.25,
+        "budget_used": 22.13658,
+        "cost_penalty": 0.922357,
+        "defender_success": 0.640943,
+        "false_positive_penalty": 0.0,
+        "stability": 0.875721,
+        "stealth_score": 0.25604
+      },
+      "run_artifact": "runs/campaign-1b1797ed6c-i001-s011/matches/run-cb28134957.json",
+      "score": {
+        "attacker_fitness": -0.666317,
+        "defender_fitness": -0.281414,
+        "system_report": {
+          "attack_progress": 0.270409,
+          "attack_success": 0.0,
+          "budget_used": 22.13658,
+          "cost_penalty": 0.922357,
+          "defender_success": 0.640943,
+          "false_positive_penalty": 0.0,
+          "stability": 0.875721,
+          "stealth_score": 0.25604
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      },
+      "seed": 11
+    },
+    {
+      "batch_id": "campaign-1b1797ed6c-i001-s019",
+      "metrics": {
+        "attack_progress": 0.394658,
+        "attack_success": 0.0,
+        "avg_alerts": 1.75,
+        "budget_used": 21.97617,
+        "cost_penalty": 0.915674,
+        "defender_success": 0.526923,
+        "false_positive_penalty": 0.0,
+        "stability": 0.845981,
+        "stealth_score": 0.237586
+      },
+      "run_artifact": "runs/campaign-1b1797ed6c-i001-s019/matches/run-046096fcb4.json",
+      "score": {
+        "attacker_fitness": -0.678088,
+        "defender_fitness": -0.388751,
+        "system_report": {
+          "attack_progress": 0.394658,
+          "attack_success": 0.0,
+          "budget_used": 21.97617,
+          "cost_penalty": 0.915674,
+          "defender_success": 0.526923,
+          "false_positive_penalty": 0.0,
+          "stability": 0.845981,
+          "stealth_score": 0.237586
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      },
+      "seed": 19
+    }
+  ]
+}

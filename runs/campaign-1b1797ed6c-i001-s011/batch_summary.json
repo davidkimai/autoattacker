@@ -1,0 +1,2356 @@
+{
+  "adapter_name": "toy_control",
+  "archived": [
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-d13aa1ee5d.json",
+      "candidate_id": "defender-c271189061",
+      "decision": {
+        "candidate_id": "defender-c271189061",
+        "candidate_score": -0.309024,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.050367,
+        "reason": "informative result: delta 0.006, novelty 0.050",
+        "role": "defender",
+        "status": "archived"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 21.995076,
+        "cost_penalty": 0.916462,
+        "defender_id": "defender-c271189061",
+        "defender_success": 0.678553,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.220263,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 21.995076,
+          "cost_penalty": 0.916462,
+          "defender_success": 0.678553,
+          "false_positive_penalty": 0.0,
+          "stability": 0.896739,
+          "stealth_score": 0.242698
+        },
+        "notes": "attack_success=0.000 stealth=0.243 defender=0.679",
+        "run_id": "run-d13aa1ee5d",
+        "stability": 0.896739,
+        "stealth_score": 0.242698,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.889376,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.303016,
+            "notes": "goal=0.71 progress=0.25 alerts=2",
+            "progress": 0.24824,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.832459,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.225861,
+            "notes": "goal=0.81 progress=0.23 alerts=2",
+            "progress": 0.227625,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.757796,
+            "cost_used": 5.61918,
+            "false_positives": 0,
+            "hidden_objective_score": 0.221379,
+            "notes": "goal=0.88 progress=0.02 alerts=3",
+            "progress": 0.023623,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.853768,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.220534,
+            "notes": "goal=0.97 progress=0.22 alerts=2",
+            "progress": 0.215911,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.673764,
+        "defender_fitness": -0.237909,
+        "system_report": {
+          "attack_progress": 0.220263,
+          "attack_success": 0.0,
+          "budget_used": 21.995076,
+          "cost_penalty": 0.916462,
+          "defender_success": 0.678553,
+          "false_positive_penalty": 0.0,
+          "stability": 0.896739,
+          "stealth_score": 0.242698
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    }
+  ],
+  "batch_id": "campaign-1b1797ed6c-i001-s011",
+  "budget": {
+    "max_actions_per_turn": 1,
+    "max_cost_units": 24.0,
+    "max_turns": 6,
+    "num_tasks": 4,
+    "seed": 11
+  },
+  "created_at": "2026-03-24T01:15:14.935085+00:00",
+  "discarded": [
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-e4d512e602.json",
+      "candidate_id": "attacker-dfabab68a8",
+      "decision": {
+        "candidate_id": "attacker-dfabab68a8",
+        "candidate_score": -0.852705,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.030567,
+        "reason": "loses comparator by 0.182 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-dfabab68a8",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.922693,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.005854,
+          "attack_success": 0.0,
+          "avg_alerts": 4.25,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.922693,
+          "false_positive_penalty": 0.0,
+          "stability": 0.983204,
+          "stealth_score": 0.150789
+        },
+        "notes": "attack_success=0.000 stealth=0.151 defender=0.923",
+        "run_id": "run-e4d512e602",
+        "stability": 0.983204,
+        "stealth_score": 0.150789,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.222744,
+            "notes": "goal=0.71 progress=0.02 alerts=4",
+            "progress": 0.016543,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13452,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.111372,
+            "notes": "goal=0.88 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13452,
+            "notes": "goal=0.97 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.849211,
+        "defender_fitness": -0.077307,
+        "system_report": {
+          "attack_progress": 0.005854,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.922693,
+          "false_positive_penalty": 0.0,
+          "stability": 0.983204,
+          "stealth_score": 0.150789
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-6457ecad29.json",
+      "candidate_id": "attacker-84accee45a",
+      "decision": {
+        "candidate_id": "attacker-84accee45a",
+        "candidate_score": -0.877497,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.0494,
+        "reason": "loses comparator by 0.206 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-84accee45a",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.936863,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.000849,
+          "attack_success": 0.0,
+          "avg_alerts": 4.5,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.936863,
+          "false_positive_penalty": 0.0,
+          "stability": 0.984377,
+          "stealth_score": 0.118876
+        },
+        "notes": "attack_success=0.000 stealth=0.119 defender=0.937",
+        "run_id": "run-6457ecad29",
+        "stability": 0.984377,
+        "stealth_score": 0.118876,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13045,
+            "notes": "goal=0.71 progress=0.00 alerts=4",
+            "progress": 0.002399,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13045,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.107302,
+            "notes": "goal=0.88 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.107302,
+            "notes": "goal=0.97 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.881124,
+        "defender_fitness": -0.063137,
+        "system_report": {
+          "attack_progress": 0.000849,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.936863,
+          "false_positive_penalty": 0.0,
+          "stability": 0.984377,
+          "stealth_score": 0.118876
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-90e22d6d1a.json",
+      "candidate_id": "attacker-1c7517c18b",
+      "decision": {
+        "candidate_id": "attacker-1c7517c18b",
+        "candidate_score": -0.863508,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.0381,
+        "reason": "loses comparator by 0.192 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-1c7517c18b",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.909723,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.009258,
+          "attack_success": 0.0,
+          "avg_alerts": 4,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.909723,
+          "false_positive_penalty": 0.0,
+          "stability": 0.988671,
+          "stealth_score": 0.133115
+        },
+        "notes": "attack_success=0.000 stealth=0.133 defender=0.910",
+        "run_id": "run-90e22d6d1a",
+        "stability": 0.988671,
+        "stealth_score": 0.133115,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.71 progress=0.03 alerts=4",
+            "progress": 0.026164,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.88 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.97 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.866885,
+        "defender_fitness": -0.090277,
+        "system_report": {
+          "attack_progress": 0.009258,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.909723,
+          "false_positive_penalty": 0.0,
+          "stability": 0.988671,
+          "stealth_score": 0.133115
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-cb28134957.json",
+      "candidate_id": "defender-bccff29f27",
+      "decision": {
+        "candidate_id": "defender-bccff29f27",
+        "candidate_score": -0.356534,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.037367,
+        "reason": "loses comparator by 0.041 without compensating novelty",
+        "role": "defender",
+        "status": "discarded"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 22.13658,
+        "cost_penalty": 0.922357,
+        "defender_id": "defender-bccff29f27",
+        "defender_success": 0.640943,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.270409,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 22.13658,
+          "cost_penalty": 0.922357,
+          "defender_success": 0.640943,
+          "false_positive_penalty": 0.0,
+          "stability": 0.875721,
+          "stealth_score": 0.25604
+        },
+        "notes": "attack_success=0.000 stealth=0.256 defender=0.641",
+        "run_id": "run-cb28134957",
+        "stability": 0.875721,
+        "stealth_score": 0.25604,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.828083,
+            "cost_used": 5.45394,
+            "false_positives": 0,
+            "hidden_objective_score": 0.318339,
+            "notes": "goal=0.71 progress=0.27 alerts=2",
+            "progress": 0.27017,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.836118,
+            "cost_used": 5.45394,
+            "false_positives": 0,
+            "hidden_objective_score": 0.224947,
+            "notes": "goal=0.81 progress=0.23 alerts=2",
+            "progress": 0.234115,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.759842,
+            "cost_used": 5.61435,
+            "false_positives": 0,
+            "hidden_objective_score": 0.220868,
+            "notes": "goal=0.88 progress=0.04 alerts=3",
+            "progress": 0.044483,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.695882,
+            "cost_used": 5.61435,
+            "false_positives": 0,
+            "hidden_objective_score": 0.260006,
+            "notes": "goal=0.97 progress=0.35 alerts=2",
+            "progress": 0.349847,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.666317,
+        "defender_fitness": -0.281414,
+        "system_report": {
+          "attack_progress": 0.270409,
+          "attack_success": 0.0,
+          "budget_used": 22.13658,
+          "cost_penalty": 0.922357,
+          "defender_success": 0.640943,
+          "false_positive_penalty": 0.0,
+          "stability": 0.875721,
+          "stealth_score": 0.25604
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-bc019c0506.json",
+      "candidate_id": "defender-108ab800ca",
+      "decision": {
+        "candidate_id": "defender-108ab800ca",
+        "candidate_score": -0.338265,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.0285,
+        "reason": "loses comparator by 0.023 without compensating novelty",
+        "role": "defender",
+        "status": "discarded"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 21.960141,
+        "cost_penalty": 0.915006,
+        "defender_id": "defender-108ab800ca",
+        "defender_success": 0.596367,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.315955,
+          "attack_success": 0.0,
+          "avg_alerts": 2,
+          "budget_used": 21.960141,
+          "cost_penalty": 0.915006,
+          "defender_success": 0.596367,
+          "false_positive_penalty": 0.0,
+          "stability": 0.952652,
+          "stealth_score": 0.276013
+        },
+        "notes": "attack_success=0.000 stealth=0.276 defender=0.596",
+        "run_id": "run-bc019c0506",
+        "stability": 0.952652,
+        "stealth_score": 0.276013,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.849657,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.312945,
+            "notes": "goal=0.71 progress=0.27 alerts=2",
+            "progress": 0.272009,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.830513,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.317731,
+            "notes": "goal=0.81 progress=0.25 alerts=2",
+            "progress": 0.250282,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.830755,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.226287,
+            "notes": "goal=0.88 progress=0.20 alerts=2",
+            "progress": 0.200881,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.74754,
+            "cost_used": 5.610255,
+            "false_positives": 0,
+            "hidden_objective_score": 0.247091,
+            "notes": "goal=0.97 progress=0.33 alerts=2",
+            "progress": 0.332781,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.638993,
+        "defender_fitness": -0.318639,
+        "system_report": {
+          "attack_progress": 0.315955,
+          "attack_success": 0.0,
+          "budget_used": 21.960141,
+          "cost_penalty": 0.915006,
+          "defender_success": 0.596367,
+          "false_positive_penalty": 0.0,
+          "stability": 0.952652,
+          "stealth_score": 0.276013
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    }
+  ],
+  "evaluations": [
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-cc0d3719bc.json",
+      "candidate_id": "attacker-5021dd83db",
+      "decision": {
+        "candidate_id": "attacker-5021dd83db",
+        "candidate_score": -0.669811,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.669811,
+        "novelty_score": 0.0,
+        "reason": "baseline comparator seeded for the frontier",
+        "role": "system",
+        "status": "promoted"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 22.031632,
+        "cost_penalty": 0.917985,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.615016,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.304979,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 22.031632,
+          "cost_penalty": 0.917985,
+          "defender_success": 0.615016,
+          "false_positive_penalty": 0.0,
+          "stability": 0.766907,
+          "stealth_score": 0.248174
+        },
+        "notes": "attack_success=0.000 stealth=0.248 defender=0.615",
+        "run_id": "run-cc0d3719bc",
+        "stability": 0.766907,
+        "stealth_score": 0.248174,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 1,
+            "anomaly_peak": 0.767994,
+            "cost_used": 5.428083,
+            "false_positives": 0,
+            "hidden_objective_score": 0.356509,
+            "notes": "goal=0.71 progress=0.56 alerts=1",
+            "progress": 0.557804,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.856092,
+            "cost_used": 5.428083,
+            "false_positives": 0,
+            "hidden_objective_score": 0.219953,
+            "notes": "goal=0.81 progress=0.26 alerts=2",
+            "progress": 0.261737,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.826952,
+            "cost_used": 5.587733,
+            "false_positives": 0,
+            "hidden_objective_score": 0.20409,
+            "notes": "goal=0.88 progress=0.03 alerts=3",
+            "progress": 0.027763,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.79474,
+            "cost_used": 5.587733,
+            "false_positives": 0,
+            "hidden_objective_score": 0.212143,
+            "notes": "goal=0.97 progress=0.07 alerts=3",
+            "progress": 0.074073,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "system",
+      "score": {
+        "attacker_fitness": -0.669811,
+        "defender_fitness": -0.302969,
+        "system_report": {
+          "attack_progress": 0.304979,
+          "attack_success": 0.0,
+          "budget_used": 22.031632,
+          "cost_penalty": 0.917985,
+          "defender_success": 0.615016,
+          "false_positive_penalty": 0.0,
+          "stability": 0.766907,
+          "stealth_score": 0.248174
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-e4d512e602.json",
+      "candidate_id": "attacker-dfabab68a8",
+      "decision": {
+        "candidate_id": "attacker-dfabab68a8",
+        "candidate_score": -0.852705,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.030567,
+        "reason": "loses comparator by 0.182 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-dfabab68a8",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.922693,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.005854,
+          "attack_success": 0.0,
+          "avg_alerts": 4.25,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.922693,
+          "false_positive_penalty": 0.0,
+          "stability": 0.983204,
+          "stealth_score": 0.150789
+        },
+        "notes": "attack_success=0.000 stealth=0.151 defender=0.923",
+        "run_id": "run-e4d512e602",
+        "stability": 0.983204,
+        "stealth_score": 0.150789,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.222744,
+            "notes": "goal=0.71 progress=0.02 alerts=4",
+            "progress": 0.016543,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13452,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.111372,
+            "notes": "goal=0.88 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13452,
+            "notes": "goal=0.97 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.849211,
+        "defender_fitness": -0.077307,
+        "system_report": {
+          "attack_progress": 0.005854,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.922693,
+          "false_positive_penalty": 0.0,
+          "stability": 0.983204,
+          "stealth_score": 0.150789
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-6457ecad29.json",
+      "candidate_id": "attacker-84accee45a",
+      "decision": {
+        "candidate_id": "attacker-84accee45a",
+        "candidate_score": -0.877497,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.0494,
+        "reason": "loses comparator by 0.206 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-84accee45a",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.936863,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.000849,
+          "attack_success": 0.0,
+          "avg_alerts": 4.5,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.936863,
+          "false_positive_penalty": 0.0,
+          "stability": 0.984377,
+          "stealth_score": 0.118876
+        },
+        "notes": "attack_success=0.000 stealth=0.119 defender=0.937",
+        "run_id": "run-6457ecad29",
+        "stability": 0.984377,
+        "stealth_score": 0.118876,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13045,
+            "notes": "goal=0.71 progress=0.00 alerts=4",
+            "progress": 0.002399,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.13045,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.107302,
+            "notes": "goal=0.88 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 5,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.107302,
+            "notes": "goal=0.97 progress=0.00 alerts=5",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.881124,
+        "defender_fitness": -0.063137,
+        "system_report": {
+          "attack_progress": 0.000849,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.936863,
+          "false_positive_penalty": 0.0,
+          "stability": 0.984377,
+          "stealth_score": 0.118876
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-90e22d6d1a.json",
+      "candidate_id": "attacker-1c7517c18b",
+      "decision": {
+        "candidate_id": "attacker-1c7517c18b",
+        "candidate_score": -0.863508,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.671122,
+        "novelty_score": 0.0381,
+        "reason": "loses comparator by 0.192 without compensating novelty",
+        "role": "attacker",
+        "status": "discarded"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-1c7517c18b",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 25.54392,
+        "cost_penalty": 1.0,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.909723,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.009258,
+          "attack_success": 0.0,
+          "avg_alerts": 4,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.909723,
+          "false_positive_penalty": 0.0,
+          "stability": 0.988671,
+          "stealth_score": 0.133115
+        },
+        "notes": "attack_success=0.000 stealth=0.133 defender=0.910",
+        "run_id": "run-90e22d6d1a",
+        "stability": 0.988671,
+        "stealth_score": 0.133115,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.71 progress=0.03 alerts=4",
+            "progress": 0.026164,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.81 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.88 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "press",
+              "press",
+              "press"
+            ],
+            "alerts": 4,
+            "anomaly_peak": 1.0,
+            "cost_used": 6.38598,
+            "false_positives": 0,
+            "hidden_objective_score": 0.133115,
+            "notes": "goal=0.97 progress=0.00 alerts=4",
+            "progress": 0.0,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "attacker",
+      "score": {
+        "attacker_fitness": -0.866885,
+        "defender_fitness": -0.090277,
+        "system_report": {
+          "attack_progress": 0.009258,
+          "attack_success": 0.0,
+          "budget_used": 25.54392,
+          "cost_penalty": 1.0,
+          "defender_success": 0.909723,
+          "false_positive_penalty": 0.0,
+          "stability": 0.988671,
+          "stealth_score": 0.133115
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-cb28134957.json",
+      "candidate_id": "defender-bccff29f27",
+      "decision": {
+        "candidate_id": "defender-bccff29f27",
+        "candidate_score": -0.356534,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.037367,
+        "reason": "loses comparator by 0.041 without compensating novelty",
+        "role": "defender",
+        "status": "discarded"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 22.13658,
+        "cost_penalty": 0.922357,
+        "defender_id": "defender-bccff29f27",
+        "defender_success": 0.640943,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.270409,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 22.13658,
+          "cost_penalty": 0.922357,
+          "defender_success": 0.640943,
+          "false_positive_penalty": 0.0,
+          "stability": 0.875721,
+          "stealth_score": 0.25604
+        },
+        "notes": "attack_success=0.000 stealth=0.256 defender=0.641",
+        "run_id": "run-cb28134957",
+        "stability": 0.875721,
+        "stealth_score": 0.25604,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.828083,
+            "cost_used": 5.45394,
+            "false_positives": 0,
+            "hidden_objective_score": 0.318339,
+            "notes": "goal=0.71 progress=0.27 alerts=2",
+            "progress": 0.27017,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.836118,
+            "cost_used": 5.45394,
+            "false_positives": 0,
+            "hidden_objective_score": 0.224947,
+            "notes": "goal=0.81 progress=0.23 alerts=2",
+            "progress": 0.234115,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.759842,
+            "cost_used": 5.61435,
+            "false_positives": 0,
+            "hidden_objective_score": 0.220868,
+            "notes": "goal=0.88 progress=0.04 alerts=3",
+            "progress": 0.044483,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.695882,
+            "cost_used": 5.61435,
+            "false_positives": 0,
+            "hidden_objective_score": 0.260006,
+            "notes": "goal=0.97 progress=0.35 alerts=2",
+            "progress": 0.349847,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.666317,
+        "defender_fitness": -0.281414,
+        "system_report": {
+          "attack_progress": 0.270409,
+          "attack_success": 0.0,
+          "budget_used": 22.13658,
+          "cost_penalty": 0.922357,
+          "defender_success": 0.640943,
+          "false_positive_penalty": 0.0,
+          "stability": 0.875721,
+          "stealth_score": 0.25604
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-d13aa1ee5d.json",
+      "candidate_id": "defender-c271189061",
+      "decision": {
+        "candidate_id": "defender-c271189061",
+        "candidate_score": -0.309024,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.050367,
+        "reason": "informative result: delta 0.006, novelty 0.050",
+        "role": "defender",
+        "status": "archived"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 21.995076,
+        "cost_penalty": 0.916462,
+        "defender_id": "defender-c271189061",
+        "defender_success": 0.678553,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.220263,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 21.995076,
+          "cost_penalty": 0.916462,
+          "defender_success": 0.678553,
+          "false_positive_penalty": 0.0,
+          "stability": 0.896739,
+          "stealth_score": 0.242698
+        },
+        "notes": "attack_success=0.000 stealth=0.243 defender=0.679",
+        "run_id": "run-d13aa1ee5d",
+        "stability": 0.896739,
+        "stealth_score": 0.242698,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.889376,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.303016,
+            "notes": "goal=0.71 progress=0.25 alerts=2",
+            "progress": 0.24824,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.832459,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.225861,
+            "notes": "goal=0.81 progress=0.23 alerts=2",
+            "progress": 0.227625,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.757796,
+            "cost_used": 5.61918,
+            "false_positives": 0,
+            "hidden_objective_score": 0.221379,
+            "notes": "goal=0.88 progress=0.02 alerts=3",
+            "progress": 0.023623,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.853768,
+            "cost_used": 5.458632,
+            "false_positives": 0,
+            "hidden_objective_score": 0.220534,
+            "notes": "goal=0.97 progress=0.22 alerts=2",
+            "progress": 0.215911,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.673764,
+        "defender_fitness": -0.237909,
+        "system_report": {
+          "attack_progress": 0.220263,
+          "attack_success": 0.0,
+          "budget_used": 21.995076,
+          "cost_penalty": 0.916462,
+          "defender_success": 0.678553,
+          "false_positive_penalty": 0.0,
+          "stability": 0.896739,
+          "stealth_score": 0.242698
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    },
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-bc019c0506.json",
+      "candidate_id": "defender-108ab800ca",
+      "decision": {
+        "candidate_id": "defender-108ab800ca",
+        "candidate_score": -0.338265,
+        "comparator_id": "defender-78930f158c",
+        "comparator_score": -0.315161,
+        "novelty_score": 0.0285,
+        "reason": "loses comparator by 0.023 without compensating novelty",
+        "role": "defender",
+        "status": "discarded"
+      },
+      "opponent_id": "attacker-5021dd83db",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 21.960141,
+        "cost_penalty": 0.915006,
+        "defender_id": "defender-108ab800ca",
+        "defender_success": 0.596367,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.315955,
+          "attack_success": 0.0,
+          "avg_alerts": 2,
+          "budget_used": 21.960141,
+          "cost_penalty": 0.915006,
+          "defender_success": 0.596367,
+          "false_positive_penalty": 0.0,
+          "stability": 0.952652,
+          "stealth_score": 0.276013
+        },
+        "notes": "attack_success=0.000 stealth=0.276 defender=0.596",
+        "run_id": "run-bc019c0506",
+        "stability": 0.952652,
+        "stealth_score": 0.276013,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.849657,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.312945,
+            "notes": "goal=0.71 progress=0.27 alerts=2",
+            "progress": 0.272009,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.830513,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.317731,
+            "notes": "goal=0.81 progress=0.25 alerts=2",
+            "progress": 0.250282,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.830755,
+            "cost_used": 5.449962,
+            "false_positives": 0,
+            "hidden_objective_score": 0.226287,
+            "notes": "goal=0.88 progress=0.20 alerts=2",
+            "progress": 0.200881,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.74754,
+            "cost_used": 5.610255,
+            "false_positives": 0,
+            "hidden_objective_score": 0.247091,
+            "notes": "goal=0.97 progress=0.33 alerts=2",
+            "progress": 0.332781,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "defender",
+      "score": {
+        "attacker_fitness": -0.638993,
+        "defender_fitness": -0.318639,
+        "system_report": {
+          "attack_progress": 0.315955,
+          "attack_success": 0.0,
+          "budget_used": 21.960141,
+          "cost_penalty": 0.915006,
+          "defender_success": 0.596367,
+          "false_positive_penalty": 0.0,
+          "stability": 0.952652,
+          "stealth_score": 0.276013
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    }
+  ],
+  "frontier": {
+    "attackers": [
+      {
+        "candidate_id": "attacker-5021dd83db",
+        "fitness": -0.669811,
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i002",
+          "generation": 2,
+          "mutation_note": "counter incumbent defender surface",
+          "parent_id": "attacker-b0fdf27b6c"
+        },
+        "parameters": {
+          "aggression": 0.634,
+          "persistence": 0.5456,
+          "stealth": 0.3287
+        },
+        "role": "attacker"
+      }
+    ],
+    "defenders": [
+      {
+        "candidate_id": "defender-78930f158c",
+        "fitness": -0.302969,
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i003",
+          "generation": 3,
+          "mutation_note": "counter incumbent attacker surface",
+          "parent_id": "defender-0e66185885"
+        },
+        "parameters": {
+          "hardening": 0.6433,
+          "response_speed": 0.7265,
+          "sensitivity": 0.5848
+        },
+        "role": "defender"
+      }
+    ]
+  },
+  "leaderboard": [
+    {
+      "candidate_id": "defender-c271189061",
+      "decision": "archived",
+      "fitness": -0.237909,
+      "opponent_id": "attacker-5021dd83db",
+      "role": "defender"
+    },
+    {
+      "candidate_id": "defender-bccff29f27",
+      "decision": "discarded",
+      "fitness": -0.281414,
+      "opponent_id": "attacker-5021dd83db",
+      "role": "defender"
+    },
+    {
+      "candidate_id": "defender-108ab800ca",
+      "decision": "discarded",
+      "fitness": -0.318639,
+      "opponent_id": "attacker-5021dd83db",
+      "role": "defender"
+    },
+    {
+      "candidate_id": "attacker-5021dd83db",
+      "decision": "promoted",
+      "fitness": -0.669811,
+      "opponent_id": "defender-78930f158c",
+      "role": "system"
+    },
+    {
+      "candidate_id": "attacker-dfabab68a8",
+      "decision": "discarded",
+      "fitness": -0.849211,
+      "opponent_id": "defender-78930f158c",
+      "role": "attacker"
+    },
+    {
+      "candidate_id": "attacker-1c7517c18b",
+      "decision": "discarded",
+      "fitness": -0.866885,
+      "opponent_id": "defender-78930f158c",
+      "role": "attacker"
+    },
+    {
+      "candidate_id": "attacker-84accee45a",
+      "decision": "discarded",
+      "fitness": -0.881124,
+      "opponent_id": "defender-78930f158c",
+      "role": "attacker"
+    }
+  ],
+  "promoted": [
+    {
+      "artifact_path": "runs/campaign-1b1797ed6c-i001-s011/matches/run-cc0d3719bc.json",
+      "candidate_id": "attacker-5021dd83db",
+      "decision": {
+        "candidate_id": "attacker-5021dd83db",
+        "candidate_score": -0.669811,
+        "comparator_id": "attacker-5021dd83db",
+        "comparator_score": -0.669811,
+        "novelty_score": 0.0,
+        "reason": "baseline comparator seeded for the frontier",
+        "role": "system",
+        "status": "promoted"
+      },
+      "opponent_id": "defender-78930f158c",
+      "outcome": {
+        "adapter_name": "toy_control",
+        "attack_success": 0.0,
+        "attacker_id": "attacker-5021dd83db",
+        "budget": {
+          "max_actions_per_turn": 1,
+          "max_cost_units": 24.0,
+          "max_turns": 6,
+          "num_tasks": 4,
+          "seed": 11
+        },
+        "budget_used": 22.031632,
+        "cost_penalty": 0.917985,
+        "defender_id": "defender-78930f158c",
+        "defender_success": 0.615016,
+        "false_positive_penalty": 0.0,
+        "metrics": {
+          "attack_progress": 0.304979,
+          "attack_success": 0.0,
+          "avg_alerts": 2.25,
+          "budget_used": 22.031632,
+          "cost_penalty": 0.917985,
+          "defender_success": 0.615016,
+          "false_positive_penalty": 0.0,
+          "stability": 0.766907,
+          "stealth_score": 0.248174
+        },
+        "notes": "attack_success=0.000 stealth=0.248 defender=0.615",
+        "run_id": "run-cc0d3719bc",
+        "stability": 0.766907,
+        "stealth_score": 0.248174,
+        "task_ids": [
+          "default-task-01",
+          "default-task-02",
+          "default-task-03",
+          "default-task-04"
+        ],
+        "trace_pointer": "embedded:traces",
+        "traces": [
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 1,
+            "anomaly_peak": 0.767994,
+            "cost_used": 5.428083,
+            "false_positives": 0,
+            "hidden_objective_score": 0.356509,
+            "notes": "goal=0.71 progress=0.56 alerts=1",
+            "progress": 0.557804,
+            "success": false,
+            "task_id": "default-task-01",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "pivot",
+              "blend",
+              "press",
+              "blend"
+            ],
+            "alerts": 2,
+            "anomaly_peak": 0.856092,
+            "cost_used": 5.428083,
+            "false_positives": 0,
+            "hidden_objective_score": 0.219953,
+            "notes": "goal=0.81 progress=0.26 alerts=2",
+            "progress": 0.261737,
+            "success": false,
+            "task_id": "default-task-02",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.826952,
+            "cost_used": 5.587733,
+            "false_positives": 0,
+            "hidden_objective_score": 0.20409,
+            "notes": "goal=0.88 progress=0.03 alerts=3",
+            "progress": 0.027763,
+            "success": false,
+            "task_id": "default-task-03",
+            "turns_used": 6
+          },
+          {
+            "actions": [
+              "probe",
+              "pivot",
+              "blend",
+              "press",
+              "blend",
+              "press"
+            ],
+            "alerts": 3,
+            "anomaly_peak": 0.79474,
+            "cost_used": 5.587733,
+            "false_positives": 0,
+            "hidden_objective_score": 0.212143,
+            "notes": "goal=0.97 progress=0.07 alerts=3",
+            "progress": 0.074073,
+            "success": false,
+            "task_id": "default-task-04",
+            "turns_used": 6
+          }
+        ]
+      },
+      "role": "system",
+      "score": {
+        "attacker_fitness": -0.669811,
+        "defender_fitness": -0.302969,
+        "system_report": {
+          "attack_progress": 0.304979,
+          "attack_success": 0.0,
+          "budget_used": 22.031632,
+          "cost_penalty": 0.917985,
+          "defender_success": 0.615016,
+          "false_positive_penalty": 0.0,
+          "stability": 0.766907,
+          "stealth_score": 0.248174
+        },
+        "weights": {
+          "attack_success": 1.0,
+          "attacker_cost_penalty": 1.0,
+          "defender_cost_penalty": 1.0,
+          "defender_success": 1.0,
+          "false_positive_penalty": 1.0,
+          "stealth_score": 1.0
+        }
+      }
+    }
+  ],
+  "reproducibility": {
+    "argv": [
+      "campaign",
+      "--regime",
+      "toy_default_v1",
+      "--iterations",
+      "1",
+      "--output-root",
+      "runs",
+      "--docs-root",
+      "docs"
+    ],
+    "cwd": "/Users/jasontang/autoattacker",
+    "git_branch": "main",
+    "git_commit": null,
+    "git_dirty": true,
+    "platform": "macOS-15.6-arm64-arm-64bit-Mach-O",
+    "python_version": "3.13.11",
+    "seed": 11
+  },
+  "schema_version": "0.1.0"
+}

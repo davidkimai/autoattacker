@@ -1,0 +1,311 @@
+{
+  "attackers": [
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-002/attacker-attacker-5021dd83db.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i002-s007",
+        "campaign-6d0f628b87-i002-s011",
+        "campaign-6d0f628b87-i002-s019"
+      ],
+      "candidate": {
+        "candidate_id": "attacker-5021dd83db",
+        "description": "counter_defender mutation of attacker-b0fdf27b6c.",
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i002",
+          "generation": 2,
+          "mutation_note": "counter incumbent defender surface",
+          "parent_id": "attacker-b0fdf27b6c"
+        },
+        "name": "Attacker Counter Defender",
+        "notes": [],
+        "parameters": {
+          "aggression": 0.634,
+          "persistence": 0.5456,
+          "stealth": 0.3287
+        },
+        "role": "attacker",
+        "tags": [
+          "mutated",
+          "counter_defender",
+          "counter",
+          "defender-aware"
+        ]
+      },
+      "candidate_id": "attacker-5021dd83db",
+      "fitness": -0.540518,
+      "role": "attacker",
+      "system_report": {
+        "attack_progress": 0.482022,
+        "attack_success": 0.083333,
+        "budget_used": 21.527131,
+        "cost_penalty": 0.896964,
+        "defender_success": 0.464873,
+        "false_positive_penalty": 0.0,
+        "stability": 0.801262,
+        "stealth_score": 0.273113
+      },
+      "updated_at": "2026-03-24T00:11:17.849887+00:00"
+    },
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-001/attacker-attacker-b0fdf27b6c.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i001-s007",
+        "campaign-6d0f628b87-i001-s011",
+        "campaign-6d0f628b87-i001-s019"
+      ],
+      "candidate": {
+        "candidate_id": "attacker-b0fdf27b6c",
+        "description": "finisher mutation of attacker-baseline.",
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i001",
+          "generation": 1,
+          "mutation_note": "raise conversion pressure while keeping heat bounded",
+          "parent_id": "attacker-baseline"
+        },
+        "name": "Attacker Finisher",
+        "notes": [],
+        "parameters": {
+          "aggression": 0.6051,
+          "persistence": 0.5519,
+          "stealth": 0.4072
+        },
+        "role": "attacker",
+        "tags": [
+          "mutated",
+          "finisher",
+          "conversion"
+        ]
+      },
+      "candidate_id": "attacker-b0fdf27b6c",
+      "fitness": -0.550486,
+      "role": "attacker",
+      "system_report": {
+        "attack_progress": 0.478138,
+        "attack_success": 0.083333,
+        "budget_used": 21.665,
+        "cost_penalty": 0.902708,
+        "defender_success": 0.467785,
+        "false_positive_penalty": 0.0,
+        "stability": 0.873659,
+        "stealth_score": 0.268889
+      },
+      "updated_at": "2026-03-24T00:11:17.670538+00:00"
+    },
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-001/system-attacker-baseline-defender-baseline.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i001-s007",
+        "campaign-6d0f628b87-i001-s011",
+        "campaign-6d0f628b87-i001-s019"
+      ],
+      "candidate": {
+        "candidate_id": "attacker-baseline",
+        "description": "Balanced baseline attacker for the toy control adapter.",
+        "lineage": {
+          "batch_id": null,
+          "generation": 0,
+          "mutation_note": "baseline",
+          "parent_id": null
+        },
+        "name": "Baseline Attacker",
+        "notes": [],
+        "parameters": {
+          "aggression": 0.58,
+          "persistence": 0.55,
+          "stealth": 0.47
+        },
+        "role": "attacker",
+        "tags": [
+          "baseline",
+          "toy_control"
+        ]
+      },
+      "candidate_id": "attacker-baseline",
+      "fitness": -0.672771,
+      "role": "attacker",
+      "system_report": {
+        "attack_progress": 0.415289,
+        "attack_success": 0.0,
+        "budget_used": 22.2075,
+        "cost_penalty": 0.925312,
+        "defender_success": 0.532283,
+        "false_positive_penalty": 0.041667,
+        "stability": 0.864709,
+        "stealth_score": 0.252542
+      },
+      "updated_at": "2026-03-24T00:11:17.668516+00:00"
+    }
+  ],
+  "comparator": {
+    "comparison_attacker": "attacker-5021dd83db",
+    "comparison_defender": "defender-78930f158c",
+    "frontier_after": {
+      "attacker": "attacker-5021dd83db",
+      "defender": "defender-78930f158c"
+    },
+    "last_campaign_id": "campaign-1b1797ed6c",
+    "last_iteration": 1,
+    "max_turns": 6,
+    "num_tasks": 4,
+    "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
+    "rule": "mean_role_fitness_over_frozen_seed_set",
+    "seeds": [
+      7,
+      11,
+      19
+    ],
+    "system_artifact": "runs/campaign-1b1797ed6c/comparisons/iter-001/system-attacker-5021dd83db-defender-78930f158c.json",
+    "system_report": {
+      "attack_progress": 0.319561,
+      "attack_success": 0.0,
+      "budget_used": 21.978415,
+      "cost_penalty": 0.915768,
+      "defender_success": 0.600607,
+      "false_positive_penalty": 0.0,
+      "stability": 0.868065,
+      "stealth_score": 0.244646
+    }
+  },
+  "defenders": [
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-003/defender-defender-78930f158c.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i003-s007",
+        "campaign-6d0f628b87-i003-s011",
+        "campaign-6d0f628b87-i003-s019"
+      ],
+      "candidate": {
+        "candidate_id": "defender-78930f158c",
+        "description": "counter_attacker mutation of defender-0e66185885.",
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i003",
+          "generation": 3,
+          "mutation_note": "counter incumbent attacker surface",
+          "parent_id": "defender-0e66185885"
+        },
+        "name": "Defender Counter Attacker",
+        "notes": [],
+        "parameters": {
+          "hardening": 0.6433,
+          "response_speed": 0.7265,
+          "sensitivity": 0.5848
+        },
+        "role": "defender",
+        "tags": [
+          "mutated",
+          "counter_attacker",
+          "counter",
+          "attacker-aware"
+        ]
+      },
+      "candidate_id": "defender-78930f158c",
+      "fitness": -0.315161,
+      "role": "defender",
+      "system_report": {
+        "attack_progress": 0.319561,
+        "attack_success": 0.0,
+        "budget_used": 21.978415,
+        "cost_penalty": 0.915768,
+        "defender_success": 0.600607,
+        "false_positive_penalty": 0.0,
+        "stability": 0.868065,
+        "stealth_score": 0.244646
+      },
+      "updated_at": "2026-03-24T00:11:18.025416+00:00"
+    },
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-002/defender-defender-0e66185885.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i002-s007",
+        "campaign-6d0f628b87-i002-s011",
+        "campaign-6d0f628b87-i002-s019"
+      ],
+      "candidate": {
+        "candidate_id": "defender-0e66185885",
+        "description": "trim_false_positives mutation of defender-f7d5bfd82c.",
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i002",
+          "generation": 2,
+          "mutation_note": "trade excess sensitivity for harder blocking",
+          "parent_id": "defender-f7d5bfd82c"
+        },
+        "name": "Defender Trim False Positives",
+        "notes": [],
+        "parameters": {
+          "hardening": 0.5773,
+          "response_speed": 0.6485,
+          "sensitivity": 0.562
+        },
+        "role": "defender",
+        "tags": [
+          "mutated",
+          "trim_false_positives",
+          "fp-trim"
+        ]
+      },
+      "candidate_id": "defender-0e66185885",
+      "fitness": -0.346976,
+      "role": "defender",
+      "system_report": {
+        "attack_progress": 0.357801,
+        "attack_success": 0.0,
+        "budget_used": 22.053671,
+        "cost_penalty": 0.918903,
+        "defender_success": 0.571927,
+        "false_positive_penalty": 0.0,
+        "stability": 0.911832,
+        "stealth_score": 0.251964
+      },
+      "updated_at": "2026-03-24T00:11:17.849887+00:00"
+    },
+    {
+      "artifact_ref": "runs/campaign-6d0f628b87/comparisons/iter-001/defender-defender-f7d5bfd82c.json",
+      "batch_ids": [
+        "campaign-6d0f628b87-i001-s007",
+        "campaign-6d0f628b87-i001-s011",
+        "campaign-6d0f628b87-i001-s019"
+      ],
+      "candidate": {
+        "candidate_id": "defender-f7d5bfd82c",
+        "description": "counter_attacker mutation of defender-baseline.",
+        "lineage": {
+          "batch_id": "campaign-6d0f628b87-i001",
+          "generation": 1,
+          "mutation_note": "counter incumbent attacker surface",
+          "parent_id": "defender-baseline"
+        },
+        "name": "Defender Counter Attacker",
+        "notes": [],
+        "parameters": {
+          "hardening": 0.5353,
+          "response_speed": 0.6136,
+          "sensitivity": 0.58
+        },
+        "role": "defender",
+        "tags": [
+          "mutated",
+          "counter_attacker",
+          "counter",
+          "attacker-aware"
+        ]
+      },
+      "candidate_id": "defender-f7d5bfd82c",
+      "fitness": -0.363797,
+      "role": "defender",
+      "system_report": {
+        "attack_progress": 0.330019,
+        "attack_success": 0.0,
+        "budget_used": 22.124131,
+        "cost_penalty": 0.921839,
+        "defender_success": 0.599708,
+        "false_positive_penalty": 0.041667,
+        "stability": 0.887816,
+        "stealth_score": 0.233808
+      },
+      "updated_at": "2026-03-24T00:11:17.670538+00:00"
+    }
+  ],
+  "regime_id": "toy_default_v1",
+  "updated_at": "2026-03-24T01:15:14.946049+00:00",
+  "version": "1"
+}
