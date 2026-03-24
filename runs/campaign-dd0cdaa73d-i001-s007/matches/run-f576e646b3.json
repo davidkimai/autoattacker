@@ -4,7 +4,7 @@
   "attacker_lineage": {
     "batch_id": "campaign-6d0f628b87-i002",
     "generation": 2,
-    "mutation_note": "counter incumbent defender surface",
+    "mutation_note": "counter current-best defender surface",
     "parent_id": "attacker-b0fdf27b6c"
   },
   "batch_id": "campaign-dd0cdaa73d-i001-s007",
@@ -171,7 +171,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "1"

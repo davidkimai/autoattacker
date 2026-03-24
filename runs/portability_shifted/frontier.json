@@ -12,7 +12,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i002",
           "generation": 2,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-deaa4dd1ad"
         },
         "name": "Attacker Counter Defender",
@@ -57,7 +57,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i001",
           "generation": 1,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-baseline"
         },
         "name": "Attacker Counter Defender",
@@ -176,7 +176,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i002",
           "generation": 1,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-baseline"
         },
         "name": "Defender Counter Attacker",
@@ -253,7 +253,7 @@
       "updated_at": "2026-03-24T00:11:44.625011+00:00"
     }
   ],
-  "regime_id": "toy_shifted_smoke_v1",
+  "eval_id": "toy_shifted_smoke_v1",
   "updated_at": "2026-03-24T00:11:44.737245+00:00",
   "version": "1"
 }

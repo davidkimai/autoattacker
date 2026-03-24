@@ -22,7 +22,7 @@
     }
   },
   "campaign_id": "campaign-ae7a616f76",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "attacker-289bd135cc",
     "description": "guided_delta mutation of attacker-baseline.",
     "lineage": {
@@ -51,12 +51,12 @@
     "comparator_id": "attacker-baseline",
     "comparator_score": -0.712166,
     "novelty_score": 0.056067,
-    "reason": "beats incumbent but loses same-iteration comparison to attacker-deaa4dd1ad (-0.665 vs -0.650)",
+    "reason": "beats current best but loses the same-iteration comparison to attacker-deaa4dd1ad (-0.665 vs -0.650)",
     "role": "attacker",
     "status": "archived"
   },
-  "delta_vs_incumbent": 0.04727,
-  "incumbent": {
+  "delta_vs_current_best": 0.04727,
+  "current_best": {
     "candidate_id": "attacker-baseline",
     "description": "Balanced baseline attacker for the toy control adapter.",
     "lineage": {
@@ -78,7 +78,7 @@
       "toy_control"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.712166,
     "defender_fitness": -0.384713,
     "system_report": {
@@ -101,7 +101,7 @@
     }
   },
   "iteration": 1,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control_shifted",
     "attacker_candidates": 2,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -112,7 +112,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_shifted_smoke_v1",
+    "eval_id": "toy_shifted_smoke_v1",
     "seeds": [
       5,
       13

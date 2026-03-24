@@ -22,7 +22,7 @@
     }
   },
   "campaign_id": "campaign-6d0f628b87",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "defender-a3bd398718",
     "description": "trim_false_positives mutation of defender-78930f158c.",
     "lineage": {
@@ -51,18 +51,18 @@
     "comparator_id": "defender-78930f158c",
     "comparator_score": -0.315161,
     "novelty_score": 0.036233,
-    "reason": "loses comparator by 0.080 without compensating novelty",
+    "reason": "does not beat current best (delta -0.080) and does not add enough novelty",
     "role": "defender",
     "status": "discarded"
   },
-  "delta_vs_incumbent": -0.080356,
-  "incumbent": {
+  "delta_vs_current_best": -0.080356,
+  "current_best": {
     "candidate_id": "defender-78930f158c",
     "description": "counter_attacker mutation of defender-0e66185885.",
     "lineage": {
       "batch_id": "campaign-6d0f628b87-i003",
       "generation": 3,
-      "mutation_note": "counter incumbent attacker surface",
+      "mutation_note": "counter current-best attacker surface",
       "parent_id": "defender-0e66185885"
     },
     "name": "Defender Counter Attacker",
@@ -80,7 +80,7 @@
       "attacker-aware"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.671122,
     "defender_fitness": -0.315161,
     "system_report": {
@@ -103,7 +103,7 @@
     }
   },
   "iteration": 4,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control",
     "attacker_candidates": 3,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -114,7 +114,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_default_v1",
+    "eval_id": "toy_default_v1",
     "seeds": [
       7,
       11,

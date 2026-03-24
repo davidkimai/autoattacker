@@ -15,13 +15,13 @@ from autoattacker.utils.io import append_text, ensure_dir, write_json, write_tex
 CAMPAIGN_LEDGER_HEADER = [
     "campaign_id",
     "iteration",
-    "regime_id",
+    "eval_id",
     "role",
-    "incumbent_id",
-    "challenger_id",
-    "challenger_lineage",
+    "current_best_id",
+    "new_candidate_id",
+    "new_candidate_lineage",
     "scalar_fitness",
-    "delta_vs_incumbent",
+    "delta_vs_current_best",
     "decision",
     "novelty_score",
     "artifact_path",
@@ -182,7 +182,7 @@ def write_campaign_summary(output_root: Path, campaign_id: str, content: str) ->
 def build_campaign_summary(
     *,
     campaign_id: str,
-    regime_id: str,
+    eval_id: str,
     iterations: int,
     frontier_path: Path,
     rows: list[dict[str, object]],
@@ -194,7 +194,7 @@ def build_campaign_summary(
     lines = [
         f"# Search Run {campaign_id}",
         "",
-        f"- Fixed evaluation setup: {regime_id}",
+        f"- Fixed evaluation setup: {eval_id}",
         f"- Iterations: {iterations}",
         f"- Best-so-far state file: {frontier_path}",
         f"- Promotions: {len(promoted)}",
@@ -206,7 +206,7 @@ def build_campaign_summary(
     if rows:
         for row in rows:
             lines.append(
-                f"- iter {row['iteration']} {row['role']} new candidate {row['challenger_id']} vs current best {row['incumbent_id']}: {row['decision']} ({_display_status_note(str(row['status_note']))})"
+                f"- iter {row['iteration']} {row['role']} new candidate {row['new_candidate_id']} vs current best {row['current_best_id']}: {row['decision']} ({_display_status_note(str(row['status_note']))})"
             )
     else:
         lines.append("- No new-candidate rows were recorded.")
@@ -214,7 +214,7 @@ def build_campaign_summary(
     if promoted:
         for row in promoted:
             lines.append(
-                f"- {row['role']} best-so-far set updated: {row['incumbent_id']} -> {row['challenger_id']} (delta {row['delta_vs_incumbent']})"
+                f"- {row['role']} best-so-far set updated: {row['current_best_id']} -> {row['new_candidate_id']} (delta {row['delta_vs_current_best']})"
             )
     else:
         lines.append("- No best-so-far changes in this search run.")
@@ -226,10 +226,10 @@ def build_campaign_summary(
 def _strongest_next_branch(rows: list[dict[str, object]]) -> str:
     if not rows:
         return "No saved non-promotion came close enough to the current best to justify another immediate try."
-    best = max(rows, key=lambda row: float(row.get("delta_vs_incumbent", -999.0)))
+    best = max(rows, key=lambda row: float(row.get("delta_vs_current_best", -999.0)))
     return (
-        f"Revisit {best['role']} new candidate {best['challenger_id']} first; it was kept as informative evidence with "
-        f"delta {best['delta_vs_incumbent']} and novelty {best['novelty_score']}."
+        f"Revisit {best['role']} new candidate {best['new_candidate_id']} first; it was kept as informative evidence with "
+        f"delta {best['delta_vs_current_best']} and novelty {best['novelty_score']}."
     )
 
 
@@ -238,7 +238,6 @@ def _display_status_note(note: str) -> str:
         note.replace("beats comparator by ", "beats current best by ")
         .replace("loses comparator by ", "does not beat current best (delta -")
         .replace(" without compensating novelty", ") and does not add enough novelty")
-        .replace("beats incumbent but loses same-iteration comparison to", "beats current best but loses the same-iteration comparison to")
     )
 
 

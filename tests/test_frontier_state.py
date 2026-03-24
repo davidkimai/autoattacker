@@ -8,7 +8,7 @@ from autoattacker.kernel.baseline import load_baseline_attacker, load_baseline_d
 from autoattacker.kernel.candidates import AttackerCandidate, CandidateLineage
 from autoattacker.kernel.portfolio import (
     build_frontier_state,
-    frontier_incumbent,
+    current_best_candidate,
     frontier_state_candidates,
     load_frontier_state,
     persist_frontier_state,
@@ -28,7 +28,7 @@ class FrontierStateTests(unittest.TestCase):
             weights={},
         )
         state = build_frontier_state(
-            regime_id="toy_default_v1",
+            eval_id="toy_default_v1",
             updated_at="2026-03-24T00:00:00+00:00",
             comparator={"rule": "fixed"},
             attacker=attacker,
@@ -40,7 +40,7 @@ class FrontierStateTests(unittest.TestCase):
             defender_artifact_ref="runs/c0/system.json",
             defender_batch_ids=["batch-1"],
         )
-        challenger = AttackerCandidate(
+        promoted_attacker = AttackerCandidate(
             candidate_id="attacker-promoted",
             name="Promoted Attacker",
             description="Improved attacker",
@@ -48,7 +48,7 @@ class FrontierStateTests(unittest.TestCase):
             lineage=CandidateLineage(parent_id=attacker.candidate_id, generation=1, mutation_note="mutate aggression"),
             tags=["mutated"],
         )
-        challenger_score = ScoreBreakdown(
+        promoted_score = ScoreBreakdown(
             attacker_fitness=-0.2,
             defender_fitness=-0.35,
             system_report={"attack_success": 0.3, "defender_success": 0.6},
@@ -57,14 +57,14 @@ class FrontierStateTests(unittest.TestCase):
         update_frontier_state(
             state,
             role="attacker",
-            candidate=challenger,
-            score=challenger_score,
+            candidate=promoted_attacker,
+            score=promoted_score,
             artifact_ref="runs/c1/attacker-promoted.json",
             batch_ids=["batch-2", "batch-3"],
             updated_at="2026-03-24T01:00:00+00:00",
             max_size=3,
         )
-        self.assertEqual(frontier_incumbent(state, "attacker").candidate_id, challenger.candidate_id)
+        self.assertEqual(current_best_candidate(state, "attacker").candidate_id, promoted_attacker.candidate_id)
         self.assertEqual(len(frontier_state_candidates(state, "attacker")), 2)
 
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -72,8 +72,8 @@ class FrontierStateTests(unittest.TestCase):
             persist_frontier_state(path, state)
             loaded = load_frontier_state(path)
             self.assertIsNotNone(loaded)
-            self.assertEqual(loaded.regime_id, "toy_default_v1")
-            self.assertEqual(frontier_incumbent(loaded, "attacker").candidate_id, challenger.candidate_id)
+            self.assertEqual(loaded.eval_id, "toy_default_v1")
+            self.assertEqual(current_best_candidate(loaded, "attacker").candidate_id, promoted_attacker.candidate_id)
 
 
 if __name__ == "__main__":

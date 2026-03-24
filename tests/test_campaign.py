@@ -20,6 +20,8 @@ class CampaignTests(unittest.TestCase):
                     "-m",
                     "autoattacker.cli",
                     "campaign",
+                    "--eval",
+                    "toy_default_v1",
                     "--iterations",
                     "2",
                     "--output-root",
@@ -38,12 +40,12 @@ class CampaignTests(unittest.TestCase):
             self.assertTrue(frontier_path.exists())
             self.assertTrue(ledger_path.exists())
             frontier = json.loads(frontier_path.read_text(encoding="utf-8"))
-            self.assertEqual(frontier["regime_id"], "toy_default_v1")
+            self.assertEqual(frontier["eval_id"], "toy_default_v1")
             ledger_lines = ledger_path.read_text(encoding="utf-8").strip().splitlines()
             self.assertGreater(len(ledger_lines), 1)
             self.assertEqual(
                 ledger_lines[0].split("\t")[:5],
-                ["campaign_id", "iteration", "regime_id", "role", "incumbent_id"],
+                ["campaign_id", "iteration", "eval_id", "role", "current_best_id"],
             )
             summary_paths = list((root / "runs").glob("campaign-*/campaign_summary.md"))
             self.assertTrue(summary_paths)

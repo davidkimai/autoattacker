@@ -164,14 +164,14 @@
     "comparator_id": "attacker-deaa4dd1ad",
     "comparator_score": -0.649976,
     "novelty_score": 0.024633,
-    "reason": "beats incumbent but loses same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
+    "reason": "beats current best but loses the same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
     "role": "attacker",
     "status": "archived"
   },
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_shifted_smoke_v1",
       "--iterations",
       "2",

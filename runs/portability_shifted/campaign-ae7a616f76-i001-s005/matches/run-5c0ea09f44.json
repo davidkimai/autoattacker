@@ -4,7 +4,7 @@
   "attacker_lineage": {
     "batch_id": "campaign-ae7a616f76-i001",
     "generation": 1,
-    "mutation_note": "counter incumbent defender surface",
+    "mutation_note": "counter current-best defender surface",
     "parent_id": "attacker-baseline"
   },
   "batch_id": "campaign-ae7a616f76-i001-s005",
@@ -164,14 +164,14 @@
     "comparator_id": "attacker-baseline",
     "comparator_score": -0.712166,
     "novelty_score": 0.0347,
-    "reason": "beats comparator by 0.062 with novelty 0.035",
+    "reason": "beats current best by 0.062 with novelty 0.035",
     "role": "attacker",
     "status": "promoted"
   },
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_shifted_smoke_v1",
       "--iterations",
       "2",

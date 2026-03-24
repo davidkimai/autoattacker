@@ -29,8 +29,8 @@ from autoattacker.kernel.derived import write_machine_derived_summaries
 from autoattacker.kernel.portfolio import (
     FrontierState,
     build_frontier_state,
+    current_best_candidate,
     frontier_candidates,
-    frontier_incumbent,
     frontier_state_candidates,
     load_frontier_state,
     persist_frontier_state,
@@ -38,7 +38,7 @@ from autoattacker.kernel.portfolio import (
     update_frontier,
     update_frontier_state,
 )
-from autoattacker.kernel.regime import DEFAULT_REGIME_ID, CampaignRegime, load_regime
+from autoattacker.kernel.eval import DEFAULT_EVAL_ID, EvaluationSetup, load_eval_setup
 from autoattacker.kernel.score import ScoreBreakdown, aggregate_score_breakdowns, score_match
 from autoattacker.kernel.select import decide_promotion, role_score, settle_iteration_promotions
 from autoattacker.utils.reproducibility import capture_reproducibility
@@ -79,8 +79,8 @@ def _comparison_decision_label(status: str) -> str:
     return mapping[status]
 
 
-def _campaign_id(regime_id: str) -> str:
-    return f"campaign-{short_hash(regime_id, time.time_ns())}"
+def _campaign_id(eval_id: str) -> str:
+    return f"campaign-{short_hash(eval_id, time.time_ns())}"
 
 
 def _iteration_batch_id(campaign_id: str, iteration: int, seed: int) -> str:
@@ -90,12 +90,12 @@ def _iteration_batch_id(campaign_id: str, iteration: int, seed: int) -> str:
 def _frontier_pool(
     frontier_state: FrontierState | None,
     role: str,
-    incumbent: AttackerCandidate | DefenderCandidate,
+    current_best: AttackerCandidate | DefenderCandidate,
 ) -> list[AttackerCandidate | DefenderCandidate]:
     if frontier_state is None:
-        return [incumbent]
+        return [current_best]
     candidates = frontier_state_candidates(frontier_state, role)
-    return candidates or [incumbent]
+    return candidates or [current_best]
 
 
 def _lineage_text(candidate: AttackerCandidate | DefenderCandidate) -> str:
@@ -338,27 +338,27 @@ def _execute_campaign_iteration(
     args: argparse.Namespace,
     campaign_id: str,
     iteration: int,
-    regime: CampaignRegime,
+    eval_setup: EvaluationSetup,
     adapter: Adapter,
     output_root: Path,
     frontier_state: FrontierState | None,
 ) -> tuple[FrontierState, list[dict[str, object]]]:
-    current_attacker = frontier_incumbent(frontier_state, "attacker") if frontier_state else load_baseline_attacker()
-    current_defender = frontier_incumbent(frontier_state, "defender") if frontier_state else load_baseline_defender()
+    current_attacker = current_best_candidate(frontier_state, "attacker") if frontier_state else load_baseline_attacker()
+    current_defender = current_best_candidate(frontier_state, "defender") if frontier_state else load_baseline_defender()
     iteration_tag = f"{campaign_id}-i{iteration:03d}"
 
     attacker_candidates = generate_attacker_candidates(
         current_attacker,
-        regime.attacker_candidates,
-        derive_seed(regime.regime_id, campaign_id, iteration, "attacker"),
+        eval_setup.attacker_candidates,
+        derive_seed(eval_setup.eval_id, campaign_id, iteration, "attacker"),
         iteration_tag,
         defender=current_defender,
         ledger_path=output_root / "campaign_results.tsv",
     )
     defender_candidates = generate_defender_candidates(
         current_defender,
-        regime.defender_candidates,
-        derive_seed(regime.regime_id, campaign_id, iteration, "defender"),
+        eval_setup.defender_candidates,
+        derive_seed(eval_setup.eval_id, campaign_id, iteration, "defender"),
         iteration_tag,
         attacker=current_attacker,
         ledger_path=output_root / "campaign_results.tsv",
@@ -374,8 +374,8 @@ def _execute_campaign_iteration(
         for candidate in defender_candidates
     }
 
-    for seed in regime.seeds:
-        budget = regime.budget_for_seed(seed)
+    for seed in eval_setup.seeds:
+        budget = eval_setup.budget_for_seed(seed)
         batch_id = _iteration_batch_id(campaign_id, iteration, seed)
         reproducibility = capture_reproducibility(cwd=Path.cwd(), argv=list(args.raw_argv), seed=seed)
 
@@ -450,7 +450,7 @@ def _execute_campaign_iteration(
             )
 
     baseline_aggregate = aggregate_score_breakdowns(
-        [baseline_by_seed[seed]["breakdown"] for seed in regime.seeds]
+        [baseline_by_seed[seed]["breakdown"] for seed in eval_setup.seeds]
     )
     attacker_frontier = _frontier_pool(frontier_state, "attacker", current_attacker)
     defender_frontier = _frontier_pool(frontier_state, "defender", current_defender)
@@ -470,8 +470,8 @@ def _execute_campaign_iteration(
             comparator=current_attacker,
             comparator_score=baseline_aggregate,
             frontier=attacker_frontier,
-            improvement_floor=regime.improvement_floor,
-            novelty_floor=regime.novelty_floor,
+            improvement_floor=eval_setup.improvement_floor,
+            novelty_floor=eval_setup.novelty_floor,
         )
     attacker_decisions = settle_iteration_promotions(
         role="attacker",
@@ -494,8 +494,8 @@ def _execute_campaign_iteration(
             comparator=current_defender,
             comparator_score=baseline_aggregate,
             frontier=defender_frontier,
-            improvement_floor=regime.improvement_floor,
-            novelty_floor=regime.novelty_floor,
+            improvement_floor=eval_setup.improvement_floor,
+            novelty_floor=eval_setup.novelty_floor,
         )
     defender_decisions = settle_iteration_promotions(
         role="defender",
@@ -503,7 +503,7 @@ def _execute_campaign_iteration(
         decisions=defender_decisions,
     )
 
-    for seed in regime.seeds:
+    for seed in eval_setup.seeds:
         seed_context = baseline_by_seed[seed]
         evaluations: list[EvaluatedCandidate] = []
         frontier_snapshot = seed_frontier(current_attacker, current_defender, seed_context["breakdown"])
@@ -608,7 +608,7 @@ def _execute_campaign_iteration(
         payload={
             "campaign_id": campaign_id,
             "iteration": iteration,
-            "regime": regime.to_dict(),
+            "eval_setup": eval_setup.to_dict(),
             "role": "system",
             "attacker": current_attacker.to_dict(),
             "defender": current_defender.to_dict(),
@@ -622,22 +622,22 @@ def _execute_campaign_iteration(
                     "score": baseline_by_seed[seed]["breakdown"].to_dict(),
                     "metrics": baseline_by_seed[seed]["outcome"].metrics,
                 }
-                for seed in regime.seeds
+                for seed in eval_setup.seeds
             ],
         },
     )
 
     if frontier_state is None:
-        baseline_batch_ids = [baseline_by_seed[seed]["batch_id"] for seed in regime.seeds]
+        baseline_batch_ids = [baseline_by_seed[seed]["batch_id"] for seed in eval_setup.seeds]
         frontier_state = build_frontier_state(
-            regime_id=regime.regime_id,
+            eval_id=eval_setup.eval_id,
             updated_at=_utc_now(),
             comparator={
-                "rule": regime.comparator_rule,
-                "promotion_rule": regime.promotion_rule,
-                "seeds": list(regime.seeds),
-                "num_tasks": regime.num_tasks,
-                "max_turns": regime.max_turns,
+                "rule": eval_setup.comparator_rule,
+                "promotion_rule": eval_setup.promotion_rule,
+                "seeds": list(eval_setup.seeds),
+                "num_tasks": eval_setup.num_tasks,
+                "max_turns": eval_setup.max_turns,
                 "last_campaign_id": campaign_id,
                 "last_iteration": iteration,
             },
@@ -657,7 +657,7 @@ def _execute_campaign_iteration(
         ("attacker", current_attacker, attacker_candidates, attacker_records, attacker_scores, attacker_decisions),
         ("defender", current_defender, defender_candidates, defender_records, defender_scores, defender_decisions),
     ]
-    for role, incumbent, candidates, records, scores, decisions in role_contexts:
+    for role, current_best, candidates, records, scores, decisions in role_contexts:
         for candidate in candidates:
             record = records[candidate.candidate_id]
             if record["error"] is not None:
@@ -670,10 +670,10 @@ def _execute_campaign_iteration(
                     payload={
                         "campaign_id": campaign_id,
                         "iteration": iteration,
-                        "regime": regime.to_dict(),
+                        "eval_setup": eval_setup.to_dict(),
                         "role": role,
-                        "incumbent": incumbent.to_dict(),
-                        "challenger": candidate.to_dict(),
+                        "current_best": current_best.to_dict(),
+                        "new_candidate": candidate.to_dict(),
                         "decision": "crash",
                         "error": record["error"],
                         "seed_results": [
@@ -690,13 +690,13 @@ def _execute_campaign_iteration(
                 row = {
                     "campaign_id": campaign_id,
                     "iteration": iteration,
-                    "regime_id": regime.regime_id,
+                    "eval_id": eval_setup.eval_id,
                     "role": role,
-                    "incumbent_id": incumbent.candidate_id,
-                    "challenger_id": candidate.candidate_id,
-                    "challenger_lineage": _lineage_text(candidate),
+                    "current_best_id": current_best.candidate_id,
+                    "new_candidate_id": candidate.candidate_id,
+                    "new_candidate_lineage": _lineage_text(candidate),
                     "scalar_fitness": "nan",
-                    "delta_vs_incumbent": "nan",
+                    "delta_vs_current_best": "nan",
                     "decision": "crash",
                     "novelty_score": "0.000000",
                     "artifact_path": str(comparison_path),
@@ -719,13 +719,13 @@ def _execute_campaign_iteration(
                 payload={
                     "campaign_id": campaign_id,
                     "iteration": iteration,
-                    "regime": regime.to_dict(),
+                    "eval_setup": eval_setup.to_dict(),
                     "role": role,
-                    "incumbent": incumbent.to_dict(),
-                    "challenger": candidate.to_dict(),
+                    "current_best": current_best.to_dict(),
+                    "new_candidate": candidate.to_dict(),
                     "aggregate_score": aggregate.to_dict(),
-                    "incumbent_score": baseline_aggregate.to_dict(),
-                    "delta_vs_incumbent": round(delta, 6),
+                    "current_best_score": baseline_aggregate.to_dict(),
+                    "delta_vs_current_best": round(delta, 6),
                     "decision": decision.to_dict(),
                     "seed_results": [
                         {
@@ -742,13 +742,13 @@ def _execute_campaign_iteration(
             row = {
                 "campaign_id": campaign_id,
                 "iteration": iteration,
-                "regime_id": regime.regime_id,
+                "eval_id": eval_setup.eval_id,
                 "role": role,
-                "incumbent_id": incumbent.candidate_id,
-                "challenger_id": candidate.candidate_id,
-                "challenger_lineage": _lineage_text(candidate),
+                "current_best_id": current_best.candidate_id,
+                "new_candidate_id": candidate.candidate_id,
+                "new_candidate_lineage": _lineage_text(candidate),
                 "scalar_fitness": f"{scalar_fitness:.6f}",
-                "delta_vs_incumbent": f"{delta:.6f}",
+                "delta_vs_current_best": f"{delta:.6f}",
                 "decision": _comparison_decision_label(decision.status),
                 "novelty_score": f"{decision.novelty_score:.6f}",
                 "artifact_path": str(comparison_path),
@@ -777,14 +777,14 @@ def _execute_campaign_iteration(
             artifact_ref=update["artifact_path"],
             batch_ids=update["batch_ids"],
             updated_at=updated_at,
-            max_size=regime.max_frontier_entries,
+            max_size=eval_setup.max_frontier_entries,
         )
     frontier_state.comparator = {
-        "rule": regime.comparator_rule,
-        "promotion_rule": regime.promotion_rule,
-        "seeds": list(regime.seeds),
-        "num_tasks": regime.num_tasks,
-        "max_turns": regime.max_turns,
+        "rule": eval_setup.comparator_rule,
+        "promotion_rule": eval_setup.promotion_rule,
+        "seeds": list(eval_setup.seeds),
+        "num_tasks": eval_setup.num_tasks,
+        "max_turns": eval_setup.max_turns,
         "last_campaign_id": campaign_id,
         "last_iteration": iteration,
         "comparison_attacker": current_attacker.candidate_id,
@@ -801,16 +801,16 @@ def _execute_campaign_iteration(
 
 
 def run_campaign(args: argparse.Namespace) -> int:
-    regime = load_regime(args.regime)
-    adapter = get_adapter(regime.adapter_name)
+    eval_setup = load_eval_setup(args.eval_id)
+    adapter = get_adapter(eval_setup.adapter_name)
     output_root = Path(args.output_root)
     docs_root = Path(args.docs_root)
     frontier_path = output_root / "frontier.json"
-    campaign_id = _campaign_id(regime.regime_id)
+    campaign_id = _campaign_id(eval_setup.eval_id)
     frontier_state = load_frontier_state(frontier_path)
-    if frontier_state is not None and frontier_state.regime_id != regime.regime_id:
+    if frontier_state is not None and frontier_state.eval_id != eval_setup.eval_id:
         raise ValueError(
-            f"best-so-far state at {frontier_path} is pinned to evaluation setup {frontier_state.regime_id}, not {regime.regime_id}"
+            f"best-so-far state at {frontier_path} is pinned to evaluation setup {frontier_state.eval_id}, not {eval_setup.eval_id}"
         )
 
     all_rows: list[dict[str, object]] = []
@@ -819,7 +819,7 @@ def run_campaign(args: argparse.Namespace) -> int:
             args=args,
             campaign_id=campaign_id,
             iteration=iteration,
-            regime=regime,
+            eval_setup=eval_setup,
             adapter=adapter,
             output_root=output_root,
             frontier_state=frontier_state,
@@ -829,18 +829,18 @@ def run_campaign(args: argparse.Namespace) -> int:
 
     summary = build_campaign_summary(
         campaign_id=campaign_id,
-        regime_id=regime.regime_id,
+        eval_id=eval_setup.eval_id,
         iterations=args.iterations,
         frontier_path=frontier_path,
         rows=all_rows,
     )
     summary_path = write_campaign_summary(output_root, campaign_id, summary)
     derived_paths: dict[str, Path] = {}
-    if regime.regime_id == DEFAULT_REGIME_ID:
+    if eval_setup.eval_id == DEFAULT_EVAL_ID:
         derived_paths = write_machine_derived_summaries(output_root, docs_root)
 
     print(f"search_run_id={campaign_id}")
-    print(f"evaluation_setup={regime.regime_id}")
+    print(f"evaluation_setup={eval_setup.eval_id}")
     print(f"iterations={args.iterations}")
     print(f"best_so_far={frontier_path}")
     print(f"experiment_log={output_root / 'campaign_results.tsv'}")
@@ -874,7 +874,7 @@ def build_parser() -> argparse.ArgumentParser:
     batch_parser.set_defaults(handler=run_batch)
 
     campaign_parser = subparsers.add_parser("campaign", help="Run the canonical search run")
-    campaign_parser.add_argument("--regime", default=DEFAULT_REGIME_ID, help="fixed evaluation setup id")
+    campaign_parser.add_argument("--eval", dest="eval_id", default=DEFAULT_EVAL_ID, help="fixed evaluation setup id")
     campaign_parser.add_argument("--iterations", type=int, default=1, help="number of search iterations")
     campaign_parser.add_argument("--output-root", default="runs", help="directory for saved run evidence")
     campaign_parser.add_argument("--docs-root", default="runs/docs", help="directory for optional generated markdown summaries")

@@ -498,7 +498,7 @@
         "comparator_id": "attacker-baseline",
         "comparator_score": -0.672771,
         "novelty_score": 0.041667,
-        "reason": "loses comparator by 0.018 without compensating novelty",
+        "reason": "does not beat current best (delta -0.018) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -818,7 +818,7 @@
         "comparator_id": "attacker-baseline",
         "comparator_score": -0.672771,
         "novelty_score": 0.041667,
-        "reason": "loses comparator by 0.018 without compensating novelty",
+        "reason": "does not beat current best (delta -0.018) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -1136,7 +1136,7 @@
         "comparator_id": "attacker-baseline",
         "comparator_score": -0.672771,
         "novelty_score": 0.029933,
-        "reason": "beats comparator by 0.122 with novelty 0.030",
+        "reason": "beats current best by 0.122 with novelty 0.030",
         "role": "attacker",
         "status": "promoted"
       },
@@ -1453,7 +1453,7 @@
         "comparator_id": "defender-baseline",
         "comparator_score": -0.434696,
         "novelty_score": 0.042967,
-        "reason": "beats comparator by 0.071 with novelty 0.043",
+        "reason": "beats current best by 0.071 with novelty 0.043",
         "role": "defender",
         "status": "promoted"
       },
@@ -1805,7 +1805,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i001",
           "generation": 1,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-baseline"
         },
         "parameters": {
@@ -2053,7 +2053,7 @@
         "comparator_id": "attacker-baseline",
         "comparator_score": -0.672771,
         "novelty_score": 0.029933,
-        "reason": "beats comparator by 0.122 with novelty 0.030",
+        "reason": "beats current best by 0.122 with novelty 0.030",
         "role": "attacker",
         "status": "promoted"
       },
@@ -2211,7 +2211,7 @@
         "comparator_id": "defender-baseline",
         "comparator_score": -0.434696,
         "novelty_score": 0.042967,
-        "reason": "beats comparator by 0.071 with novelty 0.043",
+        "reason": "beats current best by 0.071 with novelty 0.043",
         "role": "defender",
         "status": "promoted"
       },
@@ -2365,7 +2365,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "4",

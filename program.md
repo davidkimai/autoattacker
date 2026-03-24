@@ -17,7 +17,7 @@ Implement the canonical autonomous red/blue research loop:
 - Comparisons are made under a fixed evaluation setup so keep/discard decisions stay comparable.
 
 ## Search-Run Doctrine
-- The canonical search-run command is `python3 -m autoattacker.cli campaign --regime toy_default_v1`.
+- The canonical search-run command is `python3 -m autoattacker.cli campaign --eval toy_default_v1`.
 - Each iteration evaluates a bounded set of new candidates against the current best attacker and defender across the frozen seed set.
 - The loop writes its state to `runs/frontier.json` and `runs/campaign_results.tsv`.
 

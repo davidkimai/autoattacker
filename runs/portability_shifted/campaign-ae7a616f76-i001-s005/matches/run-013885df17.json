@@ -171,7 +171,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_shifted_smoke_v1",
       "--iterations",
       "2",

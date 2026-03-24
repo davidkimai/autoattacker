@@ -38,7 +38,7 @@ def _load_weighted_direction(role: str, keys: tuple[str, ...], ledger_path: Path
             if row.get("role") != role:
                 continue
             try:
-                delta = float(row.get("delta_vs_incumbent", "nan"))
+                delta = float(row.get("delta_vs_current_best", "nan"))
             except ValueError:
                 continue
             if delta <= 0.0:
@@ -47,10 +47,10 @@ def _load_weighted_direction(role: str, keys: tuple[str, ...], ledger_path: Path
             if not artifact.exists():
                 continue
             payload = json.loads(artifact.read_text(encoding="utf-8"))
-            incumbent = dict(payload.get("incumbent", {}).get("parameters", {}))
-            challenger = dict(payload.get("challenger", {}).get("parameters", {}))
+            current_best = dict(payload.get("current_best", {}).get("parameters", {}))
+            new_candidate = dict(payload.get("new_candidate", {}).get("parameters", {}))
             direction = {
-                key: challenger.get(key, 0.0) - incumbent.get(key, 0.0)
+                key: new_candidate.get(key, 0.0) - current_best.get(key, 0.0)
                 for key in keys
             }
             directions.append((delta, direction))
@@ -173,7 +173,7 @@ def _counter_defender_attacker(
         batch_id=batch_id,
         index=index,
         strategy="counter_defender",
-        mutation_note="counter incumbent defender surface",
+        mutation_note="counter current-best defender surface",
         tags=["counter", "defender-aware"],
     )
 
@@ -247,7 +247,7 @@ def _counter_attacker_defender(
         batch_id=batch_id,
         index=index,
         strategy="counter_attacker",
-        mutation_note="counter incumbent attacker surface",
+        mutation_note="counter current-best attacker surface",
         tags=["counter", "attacker-aware"],
     )
 

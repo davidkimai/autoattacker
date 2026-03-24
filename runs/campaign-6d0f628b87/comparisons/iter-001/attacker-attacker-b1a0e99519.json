@@ -22,7 +22,7 @@
     }
   },
   "campaign_id": "campaign-6d0f628b87",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "attacker-b1a0e99519",
     "description": "guided_delta mutation of attacker-baseline.",
     "lineage": {
@@ -51,12 +51,12 @@
     "comparator_id": "attacker-baseline",
     "comparator_score": -0.672771,
     "novelty_score": 0.041667,
-    "reason": "loses comparator by 0.018 without compensating novelty",
+    "reason": "does not beat current best (delta -0.018) and does not add enough novelty",
     "role": "attacker",
     "status": "discarded"
   },
-  "delta_vs_incumbent": -0.017738,
-  "incumbent": {
+  "delta_vs_current_best": -0.017738,
+  "current_best": {
     "candidate_id": "attacker-baseline",
     "description": "Balanced baseline attacker for the toy control adapter.",
     "lineage": {
@@ -78,7 +78,7 @@
       "toy_control"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.672771,
     "defender_fitness": -0.434696,
     "system_report": {
@@ -101,7 +101,7 @@
     }
   },
   "iteration": 1,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control",
     "attacker_candidates": 3,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -112,7 +112,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_default_v1",
+    "eval_id": "toy_default_v1",
     "seeds": [
       7,
       11,

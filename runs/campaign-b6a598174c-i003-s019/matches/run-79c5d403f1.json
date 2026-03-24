@@ -4,7 +4,7 @@
   "attacker_lineage": {
     "batch_id": "campaign-b6a598174c-i003",
     "generation": 3,
-    "mutation_note": "counter incumbent defender surface",
+    "mutation_note": "counter current-best defender surface",
     "parent_id": "attacker-5021dd83db"
   },
   "batch_id": "campaign-b6a598174c-i003-s019",
@@ -23,7 +23,7 @@
   "defender_lineage": {
     "batch_id": "campaign-6d0f628b87-i003",
     "generation": 3,
-    "mutation_note": "counter incumbent attacker surface",
+    "mutation_note": "counter current-best attacker surface",
     "parent_id": "defender-0e66185885"
   },
   "metrics": {
@@ -164,14 +164,14 @@
     "comparator_id": "attacker-5021dd83db",
     "comparator_score": -0.671122,
     "novelty_score": 0.049433,
-    "reason": "loses comparator by 0.192 without compensating novelty",
+    "reason": "does not beat current best (delta -0.192) and does not add enough novelty",
     "role": "attacker",
     "status": "discarded"
   },
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "3",

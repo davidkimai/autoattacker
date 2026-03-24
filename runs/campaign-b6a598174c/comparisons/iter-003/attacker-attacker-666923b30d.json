@@ -22,13 +22,13 @@
     }
   },
   "campaign_id": "campaign-b6a598174c",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "attacker-666923b30d",
     "description": "counter_defender mutation of attacker-5021dd83db.",
     "lineage": {
       "batch_id": "campaign-b6a598174c-i003",
       "generation": 3,
-      "mutation_note": "counter incumbent defender surface",
+      "mutation_note": "counter current-best defender surface",
       "parent_id": "attacker-5021dd83db"
     },
     "name": "Attacker Counter Defender",
@@ -52,18 +52,18 @@
     "comparator_id": "attacker-5021dd83db",
     "comparator_score": -0.671122,
     "novelty_score": 0.049433,
-    "reason": "loses comparator by 0.192 without compensating novelty",
+    "reason": "does not beat current best (delta -0.192) and does not add enough novelty",
     "role": "attacker",
     "status": "discarded"
   },
-  "delta_vs_incumbent": -0.192197,
-  "incumbent": {
+  "delta_vs_current_best": -0.192197,
+  "current_best": {
     "candidate_id": "attacker-5021dd83db",
     "description": "counter_defender mutation of attacker-b0fdf27b6c.",
     "lineage": {
       "batch_id": "campaign-6d0f628b87-i002",
       "generation": 2,
-      "mutation_note": "counter incumbent defender surface",
+      "mutation_note": "counter current-best defender surface",
       "parent_id": "attacker-b0fdf27b6c"
     },
     "name": "Attacker Counter Defender",
@@ -81,7 +81,7 @@
       "defender-aware"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.671122,
     "defender_fitness": -0.315161,
     "system_report": {
@@ -104,7 +104,7 @@
     }
   },
   "iteration": 3,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control",
     "attacker_candidates": 3,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -115,7 +115,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_default_v1",
+    "eval_id": "toy_default_v1",
     "seeds": [
       7,
       11,

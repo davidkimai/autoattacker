@@ -23,7 +23,7 @@
   "defender_lineage": {
     "batch_id": "campaign-6d0f628b87-i001",
     "generation": 1,
-    "mutation_note": "counter incumbent attacker surface",
+    "mutation_note": "counter current-best attacker surface",
     "parent_id": "defender-baseline"
   },
   "metrics": {
@@ -171,7 +171,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "4",

@@ -47,7 +47,7 @@ def build_current_state_markdown(
         "# Current State",
         "",
         "## Snapshot",
-        f"- Fixed evaluation setup: `{frontier['regime_id']}`",
+        f"- Fixed evaluation setup: `{frontier['eval_id']}`",
         f"- Best-so-far state file: `{frontier_path}`",
         f"- Campaign ledger: `{ledger_path}`",
         f"- Search runs logged: `{len(campaigns)}`",
@@ -66,7 +66,7 @@ def build_current_state_markdown(
     if recent_promotions:
         for row in recent_promotions:
             lines.append(
-                f"- campaign `{row['campaign_id']}` iter `{row['iteration']}` {row['role']} `{row['incumbent_id']}` -> `{row['challenger_id']}` delta `{row['delta_vs_incumbent']}`"
+                f"- campaign `{row['campaign_id']}` iter `{row['iteration']}` {row['role']} `{row['current_best_id']}` -> `{row['new_candidate_id']}` delta `{row['delta_vs_current_best']}`"
             )
     else:
         lines.append("- No promotions logged yet.")
@@ -75,7 +75,7 @@ def build_current_state_markdown(
         lines.append("- No archived branch currently outranks the active operator surface.")
     else:
         lines.append(
-            f"- Revisit {strongest_archived['role']} `{strongest_archived['challenger_id']}` from search run `{strongest_archived['campaign_id']}`; delta `{strongest_archived['delta_vs_incumbent']}`, novelty `{strongest_archived['novelty_score']}`."
+            f"- Revisit {strongest_archived['role']} `{strongest_archived['new_candidate_id']}` from search run `{strongest_archived['campaign_id']}`; delta `{strongest_archived['delta_vs_current_best']}`, novelty `{strongest_archived['novelty_score']}`."
         )
     return "\n".join(lines) + "\n"
 
@@ -117,15 +117,15 @@ def build_research_ledger_markdown(
         if promotions:
             for row in promotions:
                 lines.append(
-                    f"- iter `{row['iteration']}` {row['role']} `{row['incumbent_id']}` -> `{row['challenger_id']}` delta `{row['delta_vs_incumbent']}`"
+                    f"- iter `{row['iteration']}` {row['role']} `{row['current_best_id']}` -> `{row['new_candidate_id']}` delta `{row['delta_vs_current_best']}`"
                 )
         else:
             lines.append("- No best-so-far changes.")
         lines.extend(["", "### Strongest Archived"])
         if archived:
-            best = max(archived, key=lambda row: float(row["delta_vs_incumbent"]))
+            best = max(archived, key=lambda row: float(row["delta_vs_current_best"]))
             lines.append(
-                f"- {best['role']} `{best['challenger_id']}` delta `{best['delta_vs_incumbent']}` novelty `{best['novelty_score']}`"
+                f"- {best['role']} `{best['new_candidate_id']}` delta `{best['delta_vs_current_best']}` novelty `{best['novelty_score']}`"
             )
         else:
             lines.append("- None.")
@@ -147,4 +147,4 @@ def _strongest_archived(rows: list[dict[str, str]]) -> dict[str, str] | None:
     archived = [row for row in rows if row["decision"] == "archive_interesting"]
     if not archived:
         return None
-    return max(archived, key=lambda row: float(row["delta_vs_incumbent"]))
+    return max(archived, key=lambda row: float(row["delta_vs_current_best"]))

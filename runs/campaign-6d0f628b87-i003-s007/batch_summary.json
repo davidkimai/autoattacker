@@ -10,7 +10,7 @@
         "comparator_id": "defender-0e66185885",
         "comparator_score": -0.428153,
         "novelty_score": 0.0323,
-        "reason": "beats incumbent but loses same-iteration comparison to defender-78930f158c (-0.362 vs -0.315)",
+        "reason": "beats current best but loses the same-iteration comparison to defender-78930f158c (-0.362 vs -0.315)",
         "role": "defender",
         "status": "archived"
       },
@@ -339,7 +339,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.0281,
-        "reason": "loses comparator by 0.289 without compensating novelty",
+        "reason": "does not beat current best (delta -0.289) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -498,7 +498,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.0421,
-        "reason": "loses comparator by 0.292 without compensating novelty",
+        "reason": "does not beat current best (delta -0.292) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -657,7 +657,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.039867,
-        "reason": "loses comparator by 0.295 without compensating novelty",
+        "reason": "does not beat current best (delta -0.295) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -977,7 +977,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.0281,
-        "reason": "loses comparator by 0.289 without compensating novelty",
+        "reason": "does not beat current best (delta -0.289) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -1136,7 +1136,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.0421,
-        "reason": "loses comparator by 0.292 without compensating novelty",
+        "reason": "does not beat current best (delta -0.292) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -1295,7 +1295,7 @@
         "comparator_id": "attacker-5021dd83db",
         "comparator_score": -0.568942,
         "novelty_score": 0.039867,
-        "reason": "loses comparator by 0.295 without compensating novelty",
+        "reason": "does not beat current best (delta -0.295) and does not add enough novelty",
         "role": "attacker",
         "status": "discarded"
       },
@@ -1454,7 +1454,7 @@
         "comparator_id": "defender-0e66185885",
         "comparator_score": -0.428153,
         "novelty_score": 0.0323,
-        "reason": "beats incumbent but loses same-iteration comparison to defender-78930f158c (-0.362 vs -0.315)",
+        "reason": "beats current best but loses the same-iteration comparison to defender-78930f158c (-0.362 vs -0.315)",
         "role": "defender",
         "status": "archived"
       },
@@ -1613,7 +1613,7 @@
         "comparator_id": "defender-0e66185885",
         "comparator_score": -0.428153,
         "novelty_score": 0.0556,
-        "reason": "beats comparator by 0.113 with novelty 0.056",
+        "reason": "beats current best by 0.113 with novelty 0.056",
         "role": "defender",
         "status": "promoted"
       },
@@ -1931,7 +1931,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i002",
           "generation": 2,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-b0fdf27b6c"
         },
         "parameters": {
@@ -1949,7 +1949,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i003",
           "generation": 3,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-0e66185885"
         },
         "parameters": {
@@ -2197,7 +2197,7 @@
         "comparator_id": "defender-0e66185885",
         "comparator_score": -0.428153,
         "novelty_score": 0.0556,
-        "reason": "beats comparator by 0.113 with novelty 0.056",
+        "reason": "beats current best by 0.113 with novelty 0.056",
         "role": "defender",
         "status": "promoted"
       },
@@ -2351,7 +2351,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "4",

@@ -22,7 +22,7 @@
     }
   },
   "campaign_id": "campaign-6d0f628b87",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "attacker-e032b99d59",
     "description": "guided_delta mutation of attacker-b0fdf27b6c.",
     "lineage": {
@@ -51,12 +51,12 @@
     "comparator_id": "attacker-b0fdf27b6c",
     "comparator_score": -0.660054,
     "novelty_score": 0.025033,
-    "reason": "beats incumbent but loses same-iteration comparison to attacker-5021dd83db (-0.561 vs -0.541)",
+    "reason": "beats current best but loses the same-iteration comparison to attacker-5021dd83db (-0.561 vs -0.541)",
     "role": "attacker",
     "status": "archived"
   },
-  "delta_vs_incumbent": 0.099004,
-  "incumbent": {
+  "delta_vs_current_best": 0.099004,
+  "current_best": {
     "candidate_id": "attacker-b0fdf27b6c",
     "description": "finisher mutation of attacker-baseline.",
     "lineage": {
@@ -79,7 +79,7 @@
       "conversion"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.660054,
     "defender_fitness": -0.410285,
     "system_report": {
@@ -102,7 +102,7 @@
     }
   },
   "iteration": 2,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control",
     "attacker_candidates": 3,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -113,7 +113,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_default_v1",
+    "eval_id": "toy_default_v1",
     "seeds": [
       7,
       11,

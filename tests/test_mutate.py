@@ -22,8 +22,8 @@ class MutationTests(unittest.TestCase):
             comparison_path.write_text(
                 json.dumps(
                     {
-                        "incumbent": {"parameters": attacker.parameters},
-                        "challenger": {
+                        "current_best": {"parameters": attacker.parameters},
+                        "new_candidate": {
                             "parameters": {"aggression": 0.51, "stealth": 0.50, "persistence": 0.42}
                         },
                     }
@@ -36,13 +36,13 @@ class MutationTests(unittest.TestCase):
                     [
                         "campaign_id",
                         "iteration",
-                        "regime_id",
+                        "eval_id",
                         "role",
-                        "incumbent_id",
-                        "challenger_id",
-                        "challenger_lineage",
+                        "current_best_id",
+                        "new_candidate_id",
+                        "new_candidate_lineage",
                         "scalar_fitness",
-                        "delta_vs_incumbent",
+                        "delta_vs_current_best",
                         "decision",
                         "novelty_score",
                         "artifact_path",
@@ -106,7 +106,7 @@ class MutationTests(unittest.TestCase):
                 attacker=attacker,
                 ledger_path=ledger_path,
             )
-            self.assertEqual(defender_candidates[1].lineage.mutation_note, "counter incumbent attacker surface")
+            self.assertEqual(defender_candidates[1].lineage.mutation_note, "counter current-best attacker surface")
 
 
 if __name__ == "__main__":

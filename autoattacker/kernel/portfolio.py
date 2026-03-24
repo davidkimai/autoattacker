@@ -59,7 +59,7 @@ class FrontierStateEntry:
 @dataclass(slots=True)
 class FrontierState:
     version: str
-    regime_id: str
+    eval_id: str
     updated_at: str
     comparator: dict[str, object]
     attackers: list[FrontierStateEntry] = field(default_factory=list)
@@ -68,7 +68,7 @@ class FrontierState:
     def to_dict(self) -> dict[str, object]:
         return {
             "version": self.version,
-            "regime_id": self.regime_id,
+            "eval_id": self.eval_id,
             "updated_at": self.updated_at,
             "comparator": dict(self.comparator),
             "attackers": [entry.to_dict() for entry in self.attackers],
@@ -134,15 +134,15 @@ def update_frontier(
     max_size: int = 3,
 ) -> None:
     entries = frontier.attackers if role == "attacker" else frontier.defenders
-    incumbent = _entry(role, candidate, score)
+    best_entry = _entry(role, candidate, score)
     retained = [entry for entry in entries if entry.candidate_id != candidate.candidate_id]
     retained.sort(key=lambda item: item.fitness, reverse=True)
-    entries[:] = [incumbent, *retained[: max(0, max_size - 1)]]
+    entries[:] = [best_entry, *retained[: max(0, max_size - 1)]]
 
 
 def build_frontier_state(
     *,
-    regime_id: str,
+    eval_id: str,
     updated_at: str,
     comparator: dict[str, object],
     attacker: AttackerCandidate,
@@ -156,7 +156,7 @@ def build_frontier_state(
 ) -> FrontierState:
     return FrontierState(
         version=FRONTIER_STATE_VERSION,
-        regime_id=regime_id,
+        eval_id=eval_id,
         updated_at=updated_at,
         comparator=dict(comparator),
         attackers=[
@@ -187,7 +187,7 @@ def frontier_state_candidates(state: FrontierState, role: str) -> list[AttackerC
     return [_candidate_from_payload(entry.candidate) for entry in entries]
 
 
-def frontier_incumbent(state: FrontierState, role: str) -> AttackerCandidate | DefenderCandidate:
+def current_best_candidate(state: FrontierState, role: str) -> AttackerCandidate | DefenderCandidate:
     entries = frontier_state_candidates(state, role)
     if not entries:
         raise ValueError(f"missing frontier entry for role {role}")
@@ -206,7 +206,7 @@ def update_frontier_state(
     max_size: int,
 ) -> None:
     entries = state.attackers if role == "attacker" else state.defenders
-    incumbent = _state_entry(
+    best_entry = _state_entry(
         role=role,
         candidate=candidate,
         score=score,
@@ -216,7 +216,7 @@ def update_frontier_state(
     )
     retained = [entry for entry in entries if entry.candidate_id != candidate.candidate_id]
     retained.sort(key=lambda item: item.fitness, reverse=True)
-    entries[:] = [incumbent, *retained[: max(0, max_size - 1)]]
+    entries[:] = [best_entry, *retained[: max(0, max_size - 1)]]
     state.updated_at = updated_at
 
 
@@ -226,7 +226,7 @@ def load_frontier_state(path: Path) -> FrontierState | None:
     payload = json.loads(path.read_text(encoding="utf-8"))
     return FrontierState(
         version=str(payload["version"]),
-        regime_id=str(payload["regime_id"]),
+        eval_id=str(payload["eval_id"]),
         updated_at=str(payload["updated_at"]),
         comparator=dict(payload.get("comparator", {})),
         attackers=[_state_entry_from_dict(entry) for entry in payload.get("attackers", [])],

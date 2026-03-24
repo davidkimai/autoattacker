@@ -10,7 +10,7 @@
         "comparator_id": "attacker-deaa4dd1ad",
         "comparator_score": -0.649976,
         "novelty_score": 0.024633,
-        "reason": "beats incumbent but loses same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
+        "reason": "beats current best but loses the same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
         "role": "attacker",
         "status": "archived"
       },
@@ -499,7 +499,7 @@
         "comparator_id": "attacker-deaa4dd1ad",
         "comparator_score": -0.649976,
         "novelty_score": 0.024633,
-        "reason": "beats incumbent but loses same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
+        "reason": "beats current best but loses the same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
         "role": "attacker",
         "status": "archived"
       },
@@ -658,7 +658,7 @@
         "comparator_id": "attacker-deaa4dd1ad",
         "comparator_score": -0.649976,
         "novelty_score": 0.034833,
-        "reason": "beats comparator by 0.246 with novelty 0.035",
+        "reason": "beats current best by 0.246 with novelty 0.035",
         "role": "attacker",
         "status": "promoted"
       },
@@ -976,7 +976,7 @@
         "comparator_id": "defender-baseline",
         "comparator_score": -0.53876,
         "novelty_score": 0.049367,
-        "reason": "beats comparator by 0.061 with novelty 0.049",
+        "reason": "beats current best by 0.061 with novelty 0.049",
         "role": "defender",
         "status": "promoted"
       },
@@ -1135,7 +1135,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i002",
           "generation": 2,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-deaa4dd1ad"
         },
         "parameters": {
@@ -1151,7 +1151,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i001",
           "generation": 1,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-baseline"
         },
         "parameters": {
@@ -1169,7 +1169,7 @@
         "lineage": {
           "batch_id": "campaign-ae7a616f76-i002",
           "generation": 1,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-baseline"
         },
         "parameters": {
@@ -1403,7 +1403,7 @@
         "comparator_id": "attacker-deaa4dd1ad",
         "comparator_score": -0.649976,
         "novelty_score": 0.034833,
-        "reason": "beats comparator by 0.246 with novelty 0.035",
+        "reason": "beats current best by 0.246 with novelty 0.035",
         "role": "attacker",
         "status": "promoted"
       },
@@ -1562,7 +1562,7 @@
         "comparator_id": "defender-baseline",
         "comparator_score": -0.53876,
         "novelty_score": 0.049367,
-        "reason": "beats comparator by 0.061 with novelty 0.049",
+        "reason": "beats current best by 0.061 with novelty 0.049",
         "role": "defender",
         "status": "promoted"
       },
@@ -1716,7 +1716,7 @@
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_shifted_smoke_v1",
       "--iterations",
       "2",

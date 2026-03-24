@@ -27,7 +27,7 @@
     "lineage": {
       "batch_id": "campaign-6d0f628b87-i002",
       "generation": 2,
-      "mutation_note": "counter incumbent defender surface",
+      "mutation_note": "counter current-best defender surface",
       "parent_id": "attacker-b0fdf27b6c"
     },
     "name": "Attacker Counter Defender",
@@ -52,7 +52,7 @@
     "lineage": {
       "batch_id": "campaign-6d0f628b87-i003",
       "generation": 3,
-      "mutation_note": "counter incumbent attacker surface",
+      "mutation_note": "counter current-best attacker surface",
       "parent_id": "defender-0e66185885"
     },
     "name": "Defender Counter Attacker",
@@ -71,7 +71,7 @@
     ]
   },
   "iteration": 3,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control",
     "attacker_candidates": 3,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -82,7 +82,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_default_v1",
+    "eval_id": "toy_default_v1",
     "seeds": [
       7,
       11,

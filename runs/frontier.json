@@ -13,7 +13,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i002",
           "generation": 2,
-          "mutation_note": "counter incumbent defender surface",
+          "mutation_note": "counter current-best defender surface",
           "parent_id": "attacker-b0fdf27b6c"
         },
         "name": "Attacker Counter Defender",
@@ -143,18 +143,18 @@
       "attacker": "attacker-5021dd83db",
       "defender": "defender-78930f158c"
     },
-    "last_campaign_id": "campaign-dd0cdaa73d",
+    "last_campaign_id": "campaign-2725282554",
     "last_iteration": 1,
     "max_turns": 6,
     "num_tasks": 4,
-    "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
+    "promotion_rule": "promote_only_on_positive_current_best_delta_with_saved_run_evidence",
     "rule": "mean_role_fitness_over_frozen_seed_set",
     "seeds": [
       7,
       11,
       19
     ],
-    "system_artifact": "runs/campaign-dd0cdaa73d/comparisons/iter-001/system-attacker-5021dd83db-defender-78930f158c.json",
+    "system_artifact": "runs/campaign-2725282554/comparisons/iter-001/system-attacker-5021dd83db-defender-78930f158c.json",
     "system_report": {
       "attack_progress": 0.319561,
       "attack_success": 0.0,
@@ -180,7 +180,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i003",
           "generation": 3,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-0e66185885"
         },
         "name": "Defender Counter Attacker",
@@ -271,7 +271,7 @@
         "lineage": {
           "batch_id": "campaign-6d0f628b87-i001",
           "generation": 1,
-          "mutation_note": "counter incumbent attacker surface",
+          "mutation_note": "counter current-best attacker surface",
           "parent_id": "defender-baseline"
         },
         "name": "Defender Counter Attacker",
@@ -305,7 +305,7 @@
       "updated_at": "2026-03-24T00:11:17.670538+00:00"
     }
   ],
-  "regime_id": "toy_default_v1",
-  "updated_at": "2026-03-24T01:55:09.524090+00:00",
+  "eval_id": "toy_default_v1",
+  "updated_at": "2026-03-24T02:14:48.169835+00:00",
   "version": "1"
 }

@@ -163,14 +163,14 @@
     "comparator_id": "attacker-baseline",
     "comparator_score": -0.672771,
     "novelty_score": 0.029933,
-    "reason": "beats comparator by 0.122 with novelty 0.030",
+    "reason": "beats current best by 0.122 with novelty 0.030",
     "role": "attacker",
     "status": "promoted"
   },
   "reproducibility": {
     "argv": [
       "campaign",
-      "--regime",
+      "--eval",
       "toy_default_v1",
       "--iterations",
       "4",

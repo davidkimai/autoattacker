@@ -22,13 +22,13 @@
     }
   },
   "campaign_id": "campaign-ae7a616f76",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "defender-67f0087c7d",
     "description": "counter_attacker mutation of defender-baseline.",
     "lineage": {
       "batch_id": "campaign-ae7a616f76-i001",
       "generation": 1,
-      "mutation_note": "counter incumbent attacker surface",
+      "mutation_note": "counter current-best attacker surface",
       "parent_id": "defender-baseline"
     },
     "name": "Defender Counter Attacker",
@@ -56,8 +56,8 @@
     "role": "defender",
     "status": "archived"
   },
-  "delta_vs_incumbent": 0.000821,
-  "incumbent": {
+  "delta_vs_current_best": 0.000821,
+  "current_best": {
     "candidate_id": "defender-baseline",
     "description": "Balanced baseline defender for the toy control adapter.",
     "lineage": {
@@ -79,7 +79,7 @@
       "toy_control"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.712166,
     "defender_fitness": -0.384713,
     "system_report": {
@@ -102,7 +102,7 @@
     }
   },
   "iteration": 1,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control_shifted",
     "attacker_candidates": 2,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -113,7 +113,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_shifted_smoke_v1",
+    "eval_id": "toy_shifted_smoke_v1",
     "seeds": [
       5,
       13

@@ -21,7 +21,7 @@ def role_score(score: ScoreBreakdown, role: str) -> float:
 def _novelty(candidate: CandidateBase, frontier: list[CandidateBase]) -> float:
     if not frontier:
         return 1.0
-    return round(min(candidate_distance(candidate, incumbent) for incumbent in frontier), 6)
+    return round(min(candidate_distance(candidate, existing_candidate) for existing_candidate in frontier), 6)
 
 
 def decide_promotion(

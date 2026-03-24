@@ -22,7 +22,7 @@
     }
   },
   "campaign_id": "campaign-ae7a616f76",
-  "challenger": {
+  "new_candidate": {
     "candidate_id": "attacker-b44bf48664",
     "description": "guided_delta mutation of attacker-deaa4dd1ad.",
     "lineage": {
@@ -51,18 +51,18 @@
     "comparator_id": "attacker-deaa4dd1ad",
     "comparator_score": -0.649976,
     "novelty_score": 0.024633,
-    "reason": "beats incumbent but loses same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
+    "reason": "beats current best but loses the same-iteration comparison to attacker-ae22962f0b (-0.517 vs -0.404)",
     "role": "attacker",
     "status": "archived"
   },
-  "delta_vs_incumbent": 0.132526,
-  "incumbent": {
+  "delta_vs_current_best": 0.132526,
+  "current_best": {
     "candidate_id": "attacker-deaa4dd1ad",
     "description": "counter_defender mutation of attacker-baseline.",
     "lineage": {
       "batch_id": "campaign-ae7a616f76-i001",
       "generation": 1,
-      "mutation_note": "counter incumbent defender surface",
+      "mutation_note": "counter current-best defender surface",
       "parent_id": "attacker-baseline"
     },
     "name": "Attacker Counter Defender",
@@ -80,7 +80,7 @@
       "defender-aware"
     ]
   },
-  "incumbent_score": {
+  "current_best_score": {
     "attacker_fitness": -0.649976,
     "defender_fitness": -0.53876,
     "system_report": {
@@ -103,7 +103,7 @@
     }
   },
   "iteration": 2,
-  "regime": {
+  "eval_setup": {
     "adapter_name": "toy_control_shifted",
     "attacker_candidates": 2,
     "comparator_rule": "mean_role_fitness_over_frozen_seed_set",
@@ -114,7 +114,7 @@
     "novelty_floor": 0.05,
     "num_tasks": 4,
     "promotion_rule": "promote_only_on_positive_incumbent_delta_with_artifact_backing",
-    "regime_id": "toy_shifted_smoke_v1",
+    "eval_id": "toy_shifted_smoke_v1",
     "seeds": [
       5,
       13
