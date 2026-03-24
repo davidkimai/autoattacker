@@ -143,7 +143,7 @@
       "attacker": "attacker-5021dd83db",
       "defender": "defender-78930f158c"
     },
-    "last_campaign_id": "campaign-1b1797ed6c",
+    "last_campaign_id": "campaign-dd0cdaa73d",
     "last_iteration": 1,
     "max_turns": 6,
     "num_tasks": 4,
@@ -154,7 +154,7 @@
       11,
       19
     ],
-    "system_artifact": "runs/campaign-1b1797ed6c/comparisons/iter-001/system-attacker-5021dd83db-defender-78930f158c.json",
+    "system_artifact": "runs/campaign-dd0cdaa73d/comparisons/iter-001/system-attacker-5021dd83db-defender-78930f158c.json",
     "system_report": {
       "attack_progress": 0.319561,
       "attack_success": 0.0,
@@ -306,6 +306,6 @@
     }
   ],
   "regime_id": "toy_default_v1",
-  "updated_at": "2026-03-24T01:15:14.946049+00:00",
+  "updated_at": "2026-03-24T01:55:09.524090+00:00",
   "version": "1"
 }

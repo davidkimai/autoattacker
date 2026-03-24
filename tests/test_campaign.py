@@ -31,7 +31,8 @@ class CampaignTests(unittest.TestCase):
                 text=True,
                 check=True,
             )
-            self.assertIn("campaign_id=", result.stdout)
+            self.assertIn("search_run_id=", result.stdout)
+            self.assertIn("evaluation_setup=toy_default_v1", result.stdout)
             frontier_path = root / "runs" / "frontier.json"
             ledger_path = root / "runs" / "campaign_results.tsv"
             self.assertTrue(frontier_path.exists())

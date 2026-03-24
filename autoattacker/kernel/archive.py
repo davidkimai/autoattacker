@@ -135,13 +135,13 @@ def append_research_ledger(docs_root: Path, batch_artifact: BatchArtifact) -> No
                 f"- {record['candidate_id']}: score {record['decision']['candidate_score']:.3f}"
             )
     else:
-        lines.append("- Baseline remained the comparator frontier.")
+        lines.append("- Baseline remained the current best in this batch.")
     lines.extend(["", "### Why They Won"])
     if promoted:
         for record in promoted:
             lines.append(f"- {record['decision']['reason']}")
     else:
-        lines.append("- No challenger cleared the promotion bar in this batch.")
+        lines.append("- No new candidate cleared the promotion bar in this batch.")
     lines.extend(["", "### What Should Be Tried Next"])
     lines.append("- Re-run on a different seed to test stability.")
     lines.append("- Add one stronger mutation operator or a second adapter only if the current loop stays stable.")
@@ -192,11 +192,11 @@ def build_campaign_summary(
     crashes = [row for row in rows if row["decision"] == "crash"]
     strongest_next = _strongest_next_branch(archived)
     lines = [
-        f"# Campaign {campaign_id}",
+        f"# Search Run {campaign_id}",
         "",
-        f"- Regime: {regime_id}",
+        f"- Fixed evaluation setup: {regime_id}",
         f"- Iterations: {iterations}",
-        f"- Frontier state: {frontier_path}",
+        f"- Best-so-far state file: {frontier_path}",
         f"- Promotions: {len(promoted)}",
         f"- Archived: {len(archived)}",
         f"- Crashes: {len(crashes)}",
@@ -206,18 +206,18 @@ def build_campaign_summary(
     if rows:
         for row in rows:
             lines.append(
-                f"- iter {row['iteration']} {row['role']} {row['challenger_id']} vs {row['incumbent_id']}: {row['decision']} ({row['status_note']})"
+                f"- iter {row['iteration']} {row['role']} new candidate {row['challenger_id']} vs current best {row['incumbent_id']}: {row['decision']} ({_display_status_note(str(row['status_note']))})"
             )
     else:
-        lines.append("- No challenger rows were recorded.")
-    lines.extend(["", "## Frontier Delta"])
+        lines.append("- No new-candidate rows were recorded.")
+    lines.extend(["", "## Best-So-Far Changes"])
     if promoted:
         for row in promoted:
             lines.append(
-                f"- {row['role']} frontier advanced: {row['incumbent_id']} -> {row['challenger_id']} (delta {row['delta_vs_incumbent']})"
+                f"- {row['role']} best-so-far set updated: {row['incumbent_id']} -> {row['challenger_id']} (delta {row['delta_vs_incumbent']})"
             )
     else:
-        lines.append("- No frontier promotions in this campaign.")
+        lines.append("- No best-so-far changes in this search run.")
     lines.extend(["", "## Strongest Next Branch"])
     lines.append(f"- {strongest_next}")
     return "\n".join(lines) + "\n"
@@ -225,11 +225,20 @@ def build_campaign_summary(
 
 def _strongest_next_branch(rows: list[dict[str, object]]) -> str:
     if not rows:
-        return "No archived branch beat the incumbent closely enough to prioritize over current operator tuning."
+        return "No saved non-promotion came close enough to the current best to justify another immediate try."
     best = max(rows, key=lambda row: float(row.get("delta_vs_incumbent", -999.0)))
     return (
-        f"Revisit {best['role']} challenger {best['challenger_id']} first; it archived with delta "
-        f"{best['delta_vs_incumbent']} and novelty {best['novelty_score']}."
+        f"Revisit {best['role']} new candidate {best['challenger_id']} first; it was kept as informative evidence with "
+        f"delta {best['delta_vs_incumbent']} and novelty {best['novelty_score']}."
+    )
+
+
+def _display_status_note(note: str) -> str:
+    return (
+        note.replace("beats comparator by ", "beats current best by ")
+        .replace("loses comparator by ", "does not beat current best (delta -")
+        .replace(" without compensating novelty", ") and does not add enough novelty")
+        .replace("beats incumbent but loses same-iteration comparison to", "beats current best but loses the same-iteration comparison to")
     )
 
 

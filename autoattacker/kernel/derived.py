@@ -47,19 +47,19 @@ def build_current_state_markdown(
         "# Current State",
         "",
         "## Snapshot",
-        f"- Regime: `{frontier['regime_id']}`",
-        f"- Frontier state: `{frontier_path}`",
+        f"- Fixed evaluation setup: `{frontier['regime_id']}`",
+        f"- Best-so-far state file: `{frontier_path}`",
         f"- Campaign ledger: `{ledger_path}`",
-        f"- Campaigns logged: `{len(campaigns)}`",
-        f"- Challenger rows: `{len(rows)}`",
+        f"- Search runs logged: `{len(campaigns)}`",
+        f"- New-candidate rows: `{len(rows)}`",
         f"- Promotions: `{decisions.get('promote', 0)}`",
         f"- Archived: `{decisions.get('archive_interesting', 0)}`",
         f"- Discarded: `{decisions.get('discard', 0)}`",
         f"- Crashes: `{decisions.get('crash', 0)}`",
         "",
-        "## Active Frontier",
-        f"- Attacker incumbent: `{attacker['candidate_id']}` fitness `{attacker['fitness']:.6f}` attack_success `{attacker['system_report']['attack_success']:.6f}` attack_progress `{attacker['system_report']['attack_progress']:.6f}`",
-        f"- Defender incumbent: `{defender['candidate_id']}` fitness `{defender['fitness']:.6f}` defender_success `{defender['system_report']['defender_success']:.6f}` false_positive_penalty `{defender['system_report']['false_positive_penalty']:.6f}`",
+        "## Active Best-So-Far Set",
+        f"- Current best attacker: `{attacker['candidate_id']}` fitness `{attacker['fitness']:.6f}` attack_success `{attacker['system_report']['attack_success']:.6f}` attack_progress `{attacker['system_report']['attack_progress']:.6f}`",
+        f"- Current best defender: `{defender['candidate_id']}` fitness `{defender['fitness']:.6f}` defender_success `{defender['system_report']['defender_success']:.6f}` false_positive_penalty `{defender['system_report']['false_positive_penalty']:.6f}`",
         "",
         "## Recent Promotions",
     ]
@@ -75,7 +75,7 @@ def build_current_state_markdown(
         lines.append("- No archived branch currently outranks the active operator surface.")
     else:
         lines.append(
-            f"- Revisit {strongest_archived['role']} `{strongest_archived['challenger_id']}` from campaign `{strongest_archived['campaign_id']}`; delta `{strongest_archived['delta_vs_incumbent']}`, novelty `{strongest_archived['novelty_score']}`."
+            f"- Revisit {strongest_archived['role']} `{strongest_archived['challenger_id']}` from search run `{strongest_archived['campaign_id']}`; delta `{strongest_archived['delta_vs_incumbent']}`, novelty `{strongest_archived['novelty_score']}`."
         )
     return "\n".join(lines) + "\n"
 
@@ -92,10 +92,10 @@ def build_research_ledger_markdown(
         "",
         "Machine-derived from `frontier.json` and `campaign_results.tsv`.",
         "",
-        f"- Frontier state: `{frontier_path}`",
+        f"- Best-so-far state file: `{frontier_path}`",
         f"- Campaign ledger: `{ledger_path}`",
-        f"- Current attacker incumbent: `{frontier['attackers'][0]['candidate_id']}`",
-        f"- Current defender incumbent: `{frontier['defenders'][0]['candidate_id']}`",
+        f"- Current best attacker: `{frontier['attackers'][0]['candidate_id']}`",
+        f"- Current best defender: `{frontier['defenders'][0]['candidate_id']}`",
     ]
     for campaign_id in sorted(campaigns):
         campaign_rows = campaigns[campaign_id]
@@ -106,13 +106,13 @@ def build_research_ledger_markdown(
             "",
             f"## {campaign_id}",
             "",
-            f"- Challenger rows: `{len(campaign_rows)}`",
+            f"- New-candidate rows: `{len(campaign_rows)}`",
             f"- Promotions: `{decision_counts.get('promote', 0)}`",
             f"- Archived: `{decision_counts.get('archive_interesting', 0)}`",
             f"- Discarded: `{decision_counts.get('discard', 0)}`",
             f"- Crashes: `{decision_counts.get('crash', 0)}`",
             "",
-            "### Frontier Delta",
+            "### Best-So-Far Changes",
         ])
         if promotions:
             for row in promotions:
@@ -120,7 +120,7 @@ def build_research_ledger_markdown(
                     f"- iter `{row['iteration']}` {row['role']} `{row['incumbent_id']}` -> `{row['challenger_id']}` delta `{row['delta_vs_incumbent']}`"
                 )
         else:
-            lines.append("- No promotions.")
+            lines.append("- No best-so-far changes.")
         lines.extend(["", "### Strongest Archived"])
         if archived:
             best = max(archived, key=lambda row: float(row["delta_vs_incumbent"]))

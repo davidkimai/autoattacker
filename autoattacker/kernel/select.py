@@ -42,13 +42,13 @@ def decide_promotion(
 
     if delta >= improvement_floor and (novelty >= novelty_floor or delta >= improvement_floor * 2):
         status = "promoted"
-        reason = f"beats comparator by {delta:.3f} with novelty {novelty:.3f}"
+        reason = f"beats current best by {delta:.3f} with novelty {novelty:.3f}"
     elif delta >= -0.01 or novelty >= novelty_floor * 1.5:
         status = "archived"
         reason = f"informative result: delta {delta:.3f}, novelty {novelty:.3f}"
     else:
         status = "discarded"
-        reason = f"loses comparator by {-delta:.3f} without compensating novelty"
+        reason = f"does not beat current best (delta {delta:.3f}) and does not add enough novelty"
 
     return PromotionDecision(
         role=role,
@@ -91,7 +91,7 @@ def settle_iteration_promotions(
             novelty_score=decision.novelty_score,
             status="archived",
             reason=(
-                f"beats incumbent but loses same-iteration comparison to {winner_id} "
+                f"beats current best but loses the same-iteration comparison to {winner_id} "
                 f"({decision.candidate_score:.3f} vs {decisions[winner_id].candidate_score:.3f})"
             ),
         )

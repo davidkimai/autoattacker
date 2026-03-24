@@ -66,7 +66,7 @@ def _baseline_decision(candidate_id: str, comparator_id: str, fitness: float) ->
         comparator_score=fitness,
         novelty_score=0.0,
         status="promoted",
-        reason="baseline comparator seeded for the frontier",
+        reason="baseline seeded as the current best",
     )
 
 
@@ -810,7 +810,7 @@ def run_campaign(args: argparse.Namespace) -> int:
     frontier_state = load_frontier_state(frontier_path)
     if frontier_state is not None and frontier_state.regime_id != regime.regime_id:
         raise ValueError(
-            f"frontier at {frontier_path} is pinned to regime {frontier_state.regime_id}, not {regime.regime_id}"
+            f"best-so-far state at {frontier_path} is pinned to evaluation setup {frontier_state.regime_id}, not {regime.regime_id}"
         )
 
     all_rows: list[dict[str, object]] = []
@@ -839,11 +839,11 @@ def run_campaign(args: argparse.Namespace) -> int:
     if regime.regime_id == DEFAULT_REGIME_ID:
         derived_paths = write_machine_derived_summaries(output_root, docs_root)
 
-    print(f"campaign_id={campaign_id}")
-    print(f"regime_id={regime.regime_id}")
+    print(f"search_run_id={campaign_id}")
+    print(f"evaluation_setup={regime.regime_id}")
     print(f"iterations={args.iterations}")
-    print(f"frontier={frontier_path}")
-    print(f"ledger={output_root / 'campaign_results.tsv'}")
+    print(f"best_so_far={frontier_path}")
+    print(f"experiment_log={output_root / 'campaign_results.tsv'}")
     print(f"summary={summary_path}")
     for label, path in derived_paths.items():
         print(f"{label}={path}")
@@ -851,33 +851,33 @@ def run_campaign(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="AUTOATTACKER CLI")
+    parser = argparse.ArgumentParser(description="autoattacker CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     def add_common_flags(subparser: argparse.ArgumentParser) -> None:
-        subparser.add_argument("--adapter", default="toy_control")
-        subparser.add_argument("--seed", type=int, default=7)
-        subparser.add_argument("--tasks", type=int, default=4)
-        subparser.add_argument("--turns", type=int, default=6)
-        subparser.add_argument("--output-root", default="runs")
-        subparser.add_argument("--docs-root", default="docs")
+        subparser.add_argument("--adapter", default="toy_control", help="adapter name")
+        subparser.add_argument("--seed", type=int, default=7, help="base seed")
+        subparser.add_argument("--tasks", type=int, default=4, help="tasks per run")
+        subparser.add_argument("--turns", type=int, default=6, help="turn budget per task")
+        subparser.add_argument("--output-root", default="runs", help="directory for saved run evidence")
+        subparser.add_argument("--docs-root", default="runs/docs", help="directory for optional generated markdown summaries")
         subparser.add_argument("--update-ledger", action="store_true")
 
-    run_parser = subparsers.add_parser("run", help="Run one baseline match")
+    run_parser = subparsers.add_parser("run", help="Run one baseline evaluation")
     add_common_flags(run_parser)
     run_parser.set_defaults(handler=run_single)
 
-    batch_parser = subparsers.add_parser("batch", help="Run a bounded baseline plus mutation batch")
+    batch_parser = subparsers.add_parser("batch", help="Run one bounded search batch")
     add_common_flags(batch_parser)
     batch_parser.add_argument("--attacker-candidates", type=int, default=3)
     batch_parser.add_argument("--defender-candidates", type=int, default=3)
     batch_parser.set_defaults(handler=run_batch)
 
-    campaign_parser = subparsers.add_parser("campaign", help="Run the canonical autonomous campaign loop")
-    campaign_parser.add_argument("--regime", default=DEFAULT_REGIME_ID)
-    campaign_parser.add_argument("--iterations", type=int, default=1)
-    campaign_parser.add_argument("--output-root", default="runs")
-    campaign_parser.add_argument("--docs-root", default="docs")
+    campaign_parser = subparsers.add_parser("campaign", help="Run the canonical search run")
+    campaign_parser.add_argument("--regime", default=DEFAULT_REGIME_ID, help="fixed evaluation setup id")
+    campaign_parser.add_argument("--iterations", type=int, default=1, help="number of search iterations")
+    campaign_parser.add_argument("--output-root", default="runs", help="directory for saved run evidence")
+    campaign_parser.add_argument("--docs-root", default="runs/docs", help="directory for optional generated markdown summaries")
     campaign_parser.add_argument("--update-ledger", action="store_true")
     campaign_parser.set_defaults(handler=run_campaign)
     return parser
